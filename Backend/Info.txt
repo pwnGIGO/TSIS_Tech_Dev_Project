@@ -1,1 +1,1 @@
-Aquí trabajará el equipo del Frontend
+Aquí trabajará el equipo del Backend
