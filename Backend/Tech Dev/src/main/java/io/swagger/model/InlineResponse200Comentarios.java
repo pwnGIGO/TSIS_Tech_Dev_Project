@@ -9,13 +9,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * LugarDtoComentarios
+ * InlineResponse200Comentarios
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-25T20:53:21.707-05:00[America/Mexico_City]")
 
 
-public class LugarDtoComentarios   {
+public class InlineResponse200Comentarios   {
   @JsonProperty("usuario")
   private String usuario = null;
 
@@ -25,7 +25,7 @@ public class LugarDtoComentarios   {
   @JsonProperty("descripcion")
   private String descripcion = null;
 
-  public LugarDtoComentarios usuario(String usuario) {
+  public InlineResponse200Comentarios usuario(String usuario) {
     this.usuario = usuario;
     return this;
   }
@@ -44,7 +44,7 @@ public class LugarDtoComentarios   {
     this.usuario = usuario;
   }
 
-  public LugarDtoComentarios fecha(String fecha) {
+  public InlineResponse200Comentarios fecha(String fecha) {
     this.fecha = fecha;
     return this;
   }
@@ -53,7 +53,7 @@ public class LugarDtoComentarios   {
    * Get fecha
    * @return fecha
    **/
-  @Schema(example = "20/10/2022", description = "")
+  @Schema(example = "fecha...", description = "")
   
     public String getFecha() {
     return fecha;
@@ -63,7 +63,7 @@ public class LugarDtoComentarios   {
     this.fecha = fecha;
   }
 
-  public LugarDtoComentarios descripcion(String descripcion) {
+  public InlineResponse200Comentarios descripcion(String descripcion) {
     this.descripcion = descripcion;
     return this;
   }
@@ -72,7 +72,7 @@ public class LugarDtoComentarios   {
    * Get descripcion
    * @return descripcion
    **/
-  @Schema(example = "blablabla bla", description = "")
+  @Schema(example = "Yo creo que...", description = "")
   
     public String getDescripcion() {
     return descripcion;
@@ -91,10 +91,10 @@ public class LugarDtoComentarios   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LugarDtoComentarios lugarDtoComentarios = (LugarDtoComentarios) o;
-    return Objects.equals(this.usuario, lugarDtoComentarios.usuario) &&
-        Objects.equals(this.fecha, lugarDtoComentarios.fecha) &&
-        Objects.equals(this.descripcion, lugarDtoComentarios.descripcion);
+    InlineResponse200Comentarios inlineResponse200Comentarios = (InlineResponse200Comentarios) o;
+    return Objects.equals(this.usuario, inlineResponse200Comentarios.usuario) &&
+        Objects.equals(this.fecha, inlineResponse200Comentarios.fecha) &&
+        Objects.equals(this.descripcion, inlineResponse200Comentarios.descripcion);
   }
 
   @Override
@@ -105,7 +105,7 @@ public class LugarDtoComentarios   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LugarDtoComentarios {\n");
+    sb.append("class InlineResponse200Comentarios {\n");
     
     sb.append("    usuario: ").append(toIndentedString(usuario)).append("\n");
     sb.append("    fecha: ").append(toIndentedString(fecha)).append("\n");
