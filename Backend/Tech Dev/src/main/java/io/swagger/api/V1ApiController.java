@@ -1,9 +1,10 @@
 package io.swagger.api;
 
-import io.swagger.model.ComentarioDTO;
+import io.swagger.model.ComentarioDto;
 import io.swagger.model.ErrorDto;
+import io.swagger.model.InlineResponse200;
+import io.swagger.model.InlineResponse2001;
 import io.swagger.model.LugarDto;
-import io.swagger.model.VueloDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -35,7 +36,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-22T16:08:57.773-05:00[America/Mexico_City]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-25T20:53:21.707-05:00[America/Mexico_City]")
 @RestController
 public class V1ApiController implements V1Api {
 
@@ -51,128 +52,25 @@ public class V1ApiController implements V1Api {
         this.request = request;
     }
 
-    public ResponseEntity<VueloDto> deleteFly(@Parameter(in = ParameterIn.PATH, description = "Identificador del vuelo generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("vueloId") String vueloId) {
+    public ResponseEntity<InlineResponse2001> getHotels() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<VueloDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"auerolinea\": \"Volaris\",\n  \"origen\":\"Aeropuerto Internacional de la Ciudad de México\",\n  \"destino\": \"Aeropuerto Internacional de Cancún\",\n  \"fechaSalida\": \"01-05-2022\",\n  \"horaSalida\":\"22:00\",\n  \"fechaLlegada\": \"01-05-2022\",\n  \"horaLlegada\":\"22:00\",\n  \"asiento\": \"A-01\",\n  \"precio\": 2000.00,\n  \"tipoEquipaje\": \"Básico\"\n}\"", VueloDto.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<InlineResponse2001>(objectMapper.readValue("{\r\n  \"hoteles\" : [ {\r\n    \"descripcion\" : \"Bulliciosa zona de moda con arquitectura colonial, el Jardín Centenario y el Museo Frida Kahlo.\",\r\n    \"latitud\" : \"19.34512356266588\",\r\n    \"tipo\" : \"Hotel\",\r\n    \"wifi\" : \"si\",\r\n    \"direccion\" : \"Calz. de Tlalpan 2043, Parque San Andrés, Coyoacán, 04040 Ciudad de México, CDMX\",\r\n    \"nombre\" : \"Hotel Finisterre\",\r\n    \"lavanderia\" : \"si\",\r\n    \"habitacion\" : \"si\",\r\n    \"longitud\" : \"-99.14457352718428\",\r\n    \"precio\" : 1500,\r\n    \"sitioWeb\" : \"http://www.hotelfinisterre.com.mx/\",\r\n    \"estacionamiento\" : \"si\",\r\n    \"piscina\" : \"si\",\r\n    \"mascotas\" : \"si\",\r\n    \"telefono\" : \"525556899544\"\r\n  }, {\r\n    \"descripcion\" : \"Bulliciosa zona de moda con arquitectura colonial, el Jardín Centenario y el Museo Frida Kahlo.\",\r\n    \"latitud\" : \"19.34512356266588\",\r\n    \"tipo\" : \"Hotel\",\r\n    \"wifi\" : \"si\",\r\n    \"direccion\" : \"Calz. de Tlalpan 2043, Parque San Andrés, Coyoacán, 04040 Ciudad de México, CDMX\",\r\n    \"nombre\" : \"Hotel Finisterre\",\r\n    \"lavanderia\" : \"si\",\r\n    \"habitacion\" : \"si\",\r\n    \"longitud\" : \"-99.14457352718428\",\r\n    \"precio\" : 1500,\r\n    \"sitioWeb\" : \"http://www.hotelfinisterre.com.mx/\",\r\n    \"estacionamiento\" : \"si\",\r\n    \"piscina\" : \"si\",\r\n    \"mascotas\" : \"si\",\r\n    \"telefono\" : \"525556899544\"\r\n  } ]\r\n}", InlineResponse2001.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<VueloDto>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<InlineResponse2001>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<VueloDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> deleteHotel(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> deletePlace(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> deleteRestaurant(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<Void> getComentarios(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId) {
-        String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<VueloDto> getFlies() {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<VueloDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"auerolinea\": \"Volaris\",\n  \"origen\":\"Aeropuerto Internacional de la Ciudad de México\",\n  \"destino\": \"Aeropuerto Internacional de Cancún\",\n  \"fechaSalida\": \"01-05-2022\",\n  \"horaSalida\":\"22:00\",\n  \"fechaLlegada\": \"01-05-2022\",\n  \"horaLlegada\":\"22:00\",\n  \"asiento\": \"A-01\",\n  \"precio\": 2000.00,\n  \"tipoEquipaje\": \"Básico\"\n}\"", VueloDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<VueloDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<VueloDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<VueloDto> getFly(@Parameter(in = ParameterIn.PATH, description = "Identificador del vuelo generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("vueloId") String vueloId) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<VueloDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"auerolinea\": \"Volaris\",\n  \"origen\":\"Aeropuerto Internacional de la Ciudad de México\",\n  \"destino\": \"Aeropuerto Internacional de Cancún\",\n  \"fechaSalida\": \"01-05-2022\",\n  \"horaSalida\":\"22:00\",\n  \"fechaLlegada\": \"01-05-2022\",\n  \"horaLlegada\":\"22:00\",\n  \"asiento\": \"A-01\",\n  \"precio\": 2000.00,\n  \"tipoEquipaje\": \"Básico\"\n}\"", VueloDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<VueloDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<VueloDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> getHotel(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> getHotels() {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<InlineResponse2001>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<LugarDto> getPlace(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<LugarDto>(objectMapper.readValue("{\r\n  \"descripcion\" : \"La ciudad es...\",\r\n  \"estado\" : \"Yucatán\",\r\n  \"tipo\" : \"Zona arqueologica\",\r\n  \"latitud\" : \"20.683032102156055\",\r\n  \"longitud\" : \"20.683032102156055\",\r\n  \"precio\" : 20,\r\n  \"horarios\" : \"Lunes a Viernes de 12:00 a 16:00, Sábado y Domingo de 09:00 a 18:00\",\r\n  \"municipio\" : \"Tinum\",\r\n  \"id\" : \"2134457654324\",\r\n  \"nombre\" : \"Chichén Itzá\",\r\n  \"comentarios\" : [ {\r\n    \"descripcion\" : \"blablabla bla\",\r\n    \"fecha\" : \"20/10/2022\",\r\n    \"usuario\" : \"Rodrigo\"\r\n  }, {\r\n    \"descripcion\" : \"blablabla bla\",\r\n    \"fecha\" : \"20/10/2022\",\r\n    \"usuario\" : \"Rodrigo\"\r\n  } ]\r\n}", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -182,231 +80,25 @@ public class V1ApiController implements V1Api {
         return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<LugarDto> getPlaces() {
+    public ResponseEntity<InlineResponse200> getPlaces() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<InlineResponse200>(objectMapper.readValue("{\r\n  \"lugares\" : [ {\r\n    \"descripcion\" : \"Monumento de la revolucion\",\r\n    \"estado\" : \"CDMX\",\r\n    \"tipo\" : \"monumento\",\r\n    \"latitud\" : \"-99.0\",\r\n    \"longitud\" : \"12.0\",\r\n    \"precio\" : 50,\r\n    \"horarios\" : \"De 9 a 5 pm\",\r\n    \"municipio\" : \"Centro\",\r\n    \"id\" : \"12345678\",\r\n    \"nombre\" : \"Revolucion\",\r\n    \"comentarios\" : [ {\r\n      \"descripcion\" : \"Yo creo que...\",\r\n      \"fecha\" : \"fecha...\",\r\n      \"usuario\" : \"Rodrigo\"\r\n    }, {\r\n      \"descripcion\" : \"Yo creo que...\",\r\n      \"fecha\" : \"fecha...\",\r\n      \"usuario\" : \"Rodrigo\"\r\n    } ]\r\n  }, {\r\n    \"descripcion\" : \"Monumento de la revolucion\",\r\n    \"estado\" : \"CDMX\",\r\n    \"tipo\" : \"monumento\",\r\n    \"latitud\" : \"-99.0\",\r\n    \"longitud\" : \"12.0\",\r\n    \"precio\" : 50,\r\n    \"horarios\" : \"De 9 a 5 pm\",\r\n    \"municipio\" : \"Centro\",\r\n    \"id\" : \"12345678\",\r\n    \"nombre\" : \"Revolucion\",\r\n    \"comentarios\" : [ {\r\n      \"descripcion\" : \"Yo creo que...\",\r\n      \"fecha\" : \"fecha...\",\r\n      \"usuario\" : \"Rodrigo\"\r\n    }, {\r\n      \"descripcion\" : \"Yo creo que...\",\r\n      \"fecha\" : \"fecha...\",\r\n      \"usuario\" : \"Rodrigo\"\r\n    } ]\r\n  } ]\r\n}", InlineResponse200.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<InlineResponse200>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<InlineResponse200>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<LugarDto> getRestaurant(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body) {
+    public ResponseEntity<LugarDto> setComentarios(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody ComentarioDto body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> getRestaurants() {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<VueloDto> patchFly(@Parameter(in = ParameterIn.PATH, description = "Identificador del vuelo generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("vueloId") String vueloId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody VueloDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<VueloDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"auerolinea\": \"Volaris\",\n  \"origen\":\"Aeropuerto Internacional de la Ciudad de México\",\n  \"destino\": \"Aeropuerto Internacional de Cancún\",\n  \"fechaSalida\": \"01-05-2022\",\n  \"horaSalida\":\"22:00\",\n  \"fechaLlegada\": \"01-05-2022\",\n  \"horaLlegada\":\"22:00\",\n  \"asiento\": \"A-01\",\n  \"precio\": 2000.00,\n  \"tipoEquipaje\": \"Básico\"\n}\"", VueloDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<VueloDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<VueloDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> patchHotel(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> patchPlace(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> patchRestaurant(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<ComentarioDTO> setComentarios(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody ComentarioDTO body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<ComentarioDTO>(objectMapper.readValue("\"{\n  \"usuario\": \"Rodrigo\",\n  \"fecha\": \"20/10/2022\",\n  \"descripcion\":\"blablabla bla\"\n}\"", ComentarioDTO.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<ComentarioDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<VueloDto> setFly(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody VueloDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<VueloDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"auerolinea\": \"Volaris\",\n  \"origen\":\"Aeropuerto Internacional de la Ciudad de México\",\n  \"destino\": \"Aeropuerto Internacional de Cancún\",\n  \"fechaSalida\": \"01-05-2022\",\n  \"horaSalida\":\"22:00\",\n  \"fechaLlegada\": \"01-05-2022\",\n  \"horaLlegada\":\"22:00\",\n  \"asiento\": \"A-01\",\n  \"precio\": 2000.00,\n  \"tipoEquipaje\": \"Básico\"\n}\"", VueloDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<VueloDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<VueloDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> setPlace(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<VueloDto> updateFly(@Parameter(in = ParameterIn.PATH, description = "Identificador del vuelo generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("vueloId") String vueloId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody VueloDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<VueloDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"auerolinea\": \"Volaris\",\n  \"origen\":\"Aeropuerto Internacional de la Ciudad de México\",\n  \"destino\": \"Aeropuerto Internacional de Cancún\",\n  \"fechaSalida\": \"01-05-2022\",\n  \"horaSalida\":\"22:00\",\n  \"fechaLlegada\": \"01-05-2022\",\n  \"horaLlegada\":\"22:00\",\n  \"asiento\": \"A-01\",\n  \"precio\": 2000.00,\n  \"tipoEquipaje\": \"Básico\"\n}\"", VueloDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<VueloDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<VueloDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> updateHotel(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> updatePlace(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> updateRestaurant(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> v1HotelLugarIdGet(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<LugarDto>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<Void> v1LugaresIdTipoGet() {
-        String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<Void> v1LugaresPreciosGet() {
-        String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<LugarDto> v1ResuaturantLugarIdGet(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<LugarDto>(objectMapper.readValue("\"{\n  \"id\": \"2134457654324\",\n  \"nombre\": \"Chichén Itzá\",\n  \"municipio\":\"Tinum\",\n  \"estado\": \"Yucatán\",\n  \"descripcion\":\"La ciudad es...\",\n  \"tipo\":\"Zona arqueológica\",\n  \"geolocalizacion\":{\n    \"latitud\": \"20.683032102156055\",\n    \"longitud\": \"-88.5685510258526\"\n  },\n  \"horarios\": [\n    \"Lunes a Viernes de 12:00 a 16:00\",\n    \"Sábado y Domingo de 09:00 a 18:00\"\n  ],\n  \"precios\":[\n    \"General $300 mxn\",\n    \"Estudiante $100 mxn\",\n    \"Adulto mayor $50 mxn\"\n  ]\n}\"", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<LugarDto>(objectMapper.readValue("{\r\n  \"descripcion\" : \"La ciudad es...\",\r\n  \"estado\" : \"Yucatán\",\r\n  \"tipo\" : \"Zona arqueologica\",\r\n  \"latitud\" : \"20.683032102156055\",\r\n  \"longitud\" : \"20.683032102156055\",\r\n  \"precio\" : 20,\r\n  \"horarios\" : \"Lunes a Viernes de 12:00 a 16:00, Sábado y Domingo de 09:00 a 18:00\",\r\n  \"municipio\" : \"Tinum\",\r\n  \"id\" : \"2134457654324\",\r\n  \"nombre\" : \"Chichén Itzá\",\r\n  \"comentarios\" : [ {\r\n    \"descripcion\" : \"blablabla bla\",\r\n    \"fecha\" : \"20/10/2022\",\r\n    \"usuario\" : \"Rodrigo\"\r\n  }, {\r\n    \"descripcion\" : \"blablabla bla\",\r\n    \"fecha\" : \"20/10/2022\",\r\n    \"usuario\" : \"Rodrigo\"\r\n  } ]\r\n}", LugarDto.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<LugarDto>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -10,13 +10,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * HospedajeDto
+ * InlineResponse2001Hoteles
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-25T20:53:21.707-05:00[America/Mexico_City]")
 
 
-public class HospedajeDto   {
+public class InlineResponse2001Hoteles   {
   @JsonProperty("nombre")
   private String nombre = null;
 
@@ -62,7 +62,7 @@ public class HospedajeDto   {
   @JsonProperty("mascotas")
   private String mascotas = null;
 
-  public HospedajeDto nombre(String nombre) {
+  public InlineResponse2001Hoteles nombre(String nombre) {
     this.nombre = nombre;
     return this;
   }
@@ -81,7 +81,7 @@ public class HospedajeDto   {
     this.nombre = nombre;
   }
 
-  public HospedajeDto direccion(String direccion) {
+  public InlineResponse2001Hoteles direccion(String direccion) {
     this.direccion = direccion;
     return this;
   }
@@ -100,7 +100,7 @@ public class HospedajeDto   {
     this.direccion = direccion;
   }
 
-  public HospedajeDto telefono(String telefono) {
+  public InlineResponse2001Hoteles telefono(String telefono) {
     this.telefono = telefono;
     return this;
   }
@@ -119,7 +119,7 @@ public class HospedajeDto   {
     this.telefono = telefono;
   }
 
-  public HospedajeDto sitioWeb(String sitioWeb) {
+  public InlineResponse2001Hoteles sitioWeb(String sitioWeb) {
     this.sitioWeb = sitioWeb;
     return this;
   }
@@ -138,7 +138,7 @@ public class HospedajeDto   {
     this.sitioWeb = sitioWeb;
   }
 
-  public HospedajeDto descripcion(String descripcion) {
+  public InlineResponse2001Hoteles descripcion(String descripcion) {
     this.descripcion = descripcion;
     return this;
   }
@@ -157,7 +157,7 @@ public class HospedajeDto   {
     this.descripcion = descripcion;
   }
 
-  public HospedajeDto latitud(String latitud) {
+  public InlineResponse2001Hoteles latitud(String latitud) {
     this.latitud = latitud;
     return this;
   }
@@ -176,7 +176,7 @@ public class HospedajeDto   {
     this.latitud = latitud;
   }
 
-  public HospedajeDto longitud(String longitud) {
+  public InlineResponse2001Hoteles longitud(String longitud) {
     this.longitud = longitud;
     return this;
   }
@@ -195,7 +195,7 @@ public class HospedajeDto   {
     this.longitud = longitud;
   }
 
-  public HospedajeDto precio(BigDecimal precio) {
+  public InlineResponse2001Hoteles precio(BigDecimal precio) {
     this.precio = precio;
     return this;
   }
@@ -215,7 +215,7 @@ public class HospedajeDto   {
     this.precio = precio;
   }
 
-  public HospedajeDto tipo(String tipo) {
+  public InlineResponse2001Hoteles tipo(String tipo) {
     this.tipo = tipo;
     return this;
   }
@@ -234,7 +234,7 @@ public class HospedajeDto   {
     this.tipo = tipo;
   }
 
-  public HospedajeDto estacionamiento(String estacionamiento) {
+  public InlineResponse2001Hoteles estacionamiento(String estacionamiento) {
     this.estacionamiento = estacionamiento;
     return this;
   }
@@ -253,7 +253,7 @@ public class HospedajeDto   {
     this.estacionamiento = estacionamiento;
   }
 
-  public HospedajeDto piscina(String piscina) {
+  public InlineResponse2001Hoteles piscina(String piscina) {
     this.piscina = piscina;
     return this;
   }
@@ -272,7 +272,7 @@ public class HospedajeDto   {
     this.piscina = piscina;
   }
 
-  public HospedajeDto habitacion(String habitacion) {
+  public InlineResponse2001Hoteles habitacion(String habitacion) {
     this.habitacion = habitacion;
     return this;
   }
@@ -291,7 +291,7 @@ public class HospedajeDto   {
     this.habitacion = habitacion;
   }
 
-  public HospedajeDto lavanderia(String lavanderia) {
+  public InlineResponse2001Hoteles lavanderia(String lavanderia) {
     this.lavanderia = lavanderia;
     return this;
   }
@@ -310,7 +310,7 @@ public class HospedajeDto   {
     this.lavanderia = lavanderia;
   }
 
-  public HospedajeDto wifi(String wifi) {
+  public InlineResponse2001Hoteles wifi(String wifi) {
     this.wifi = wifi;
     return this;
   }
@@ -329,7 +329,7 @@ public class HospedajeDto   {
     this.wifi = wifi;
   }
 
-  public HospedajeDto mascotas(String mascotas) {
+  public InlineResponse2001Hoteles mascotas(String mascotas) {
     this.mascotas = mascotas;
     return this;
   }
@@ -357,22 +357,22 @@ public class HospedajeDto   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HospedajeDto hospedajeDto = (HospedajeDto) o;
-    return Objects.equals(this.nombre, hospedajeDto.nombre) &&
-        Objects.equals(this.direccion, hospedajeDto.direccion) &&
-        Objects.equals(this.telefono, hospedajeDto.telefono) &&
-        Objects.equals(this.sitioWeb, hospedajeDto.sitioWeb) &&
-        Objects.equals(this.descripcion, hospedajeDto.descripcion) &&
-        Objects.equals(this.latitud, hospedajeDto.latitud) &&
-        Objects.equals(this.longitud, hospedajeDto.longitud) &&
-        Objects.equals(this.precio, hospedajeDto.precio) &&
-        Objects.equals(this.tipo, hospedajeDto.tipo) &&
-        Objects.equals(this.estacionamiento, hospedajeDto.estacionamiento) &&
-        Objects.equals(this.piscina, hospedajeDto.piscina) &&
-        Objects.equals(this.habitacion, hospedajeDto.habitacion) &&
-        Objects.equals(this.lavanderia, hospedajeDto.lavanderia) &&
-        Objects.equals(this.wifi, hospedajeDto.wifi) &&
-        Objects.equals(this.mascotas, hospedajeDto.mascotas);
+    InlineResponse2001Hoteles inlineResponse2001Hoteles = (InlineResponse2001Hoteles) o;
+    return Objects.equals(this.nombre, inlineResponse2001Hoteles.nombre) &&
+        Objects.equals(this.direccion, inlineResponse2001Hoteles.direccion) &&
+        Objects.equals(this.telefono, inlineResponse2001Hoteles.telefono) &&
+        Objects.equals(this.sitioWeb, inlineResponse2001Hoteles.sitioWeb) &&
+        Objects.equals(this.descripcion, inlineResponse2001Hoteles.descripcion) &&
+        Objects.equals(this.latitud, inlineResponse2001Hoteles.latitud) &&
+        Objects.equals(this.longitud, inlineResponse2001Hoteles.longitud) &&
+        Objects.equals(this.precio, inlineResponse2001Hoteles.precio) &&
+        Objects.equals(this.tipo, inlineResponse2001Hoteles.tipo) &&
+        Objects.equals(this.estacionamiento, inlineResponse2001Hoteles.estacionamiento) &&
+        Objects.equals(this.piscina, inlineResponse2001Hoteles.piscina) &&
+        Objects.equals(this.habitacion, inlineResponse2001Hoteles.habitacion) &&
+        Objects.equals(this.lavanderia, inlineResponse2001Hoteles.lavanderia) &&
+        Objects.equals(this.wifi, inlineResponse2001Hoteles.wifi) &&
+        Objects.equals(this.mascotas, inlineResponse2001Hoteles.mascotas);
   }
 
   @Override
@@ -383,7 +383,7 @@ public class HospedajeDto   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HospedajeDto {\n");
+    sb.append("class InlineResponse2001Hoteles {\n");
     
     sb.append("    nombre: ").append(toIndentedString(nombre)).append("\n");
     sb.append("    direccion: ").append(toIndentedString(direccion)).append("\n");

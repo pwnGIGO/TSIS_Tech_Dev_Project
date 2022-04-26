@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.InlineResponse200Lugares;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,25 +12,25 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * RestaurantDto
+ * InlineResponse200
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-22T16:08:57.773-05:00[America/Mexico_City]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-25T20:53:21.707-05:00[America/Mexico_City]")
 
 
-public class RestaurantDto   {
+public class InlineResponse200   {
   @JsonProperty("lugares")
   @Valid
-  private List<String> lugares = null;
+  private List<InlineResponse200Lugares> lugares = null;
 
-  public RestaurantDto lugares(List<String> lugares) {
+  public InlineResponse200 lugares(List<InlineResponse200Lugares> lugares) {
     this.lugares = lugares;
     return this;
   }
 
-  public RestaurantDto addLugaresItem(String lugaresItem) {
+  public InlineResponse200 addLugaresItem(InlineResponse200Lugares lugaresItem) {
     if (this.lugares == null) {
-      this.lugares = new ArrayList<String>();
+      this.lugares = new ArrayList<InlineResponse200Lugares>();
     }
     this.lugares.add(lugaresItem);
     return this;
@@ -40,12 +41,12 @@ public class RestaurantDto   {
    * @return lugares
    **/
   @Schema(description = "")
-  
-    public List<String> getLugares() {
+      @Valid
+    public List<InlineResponse200Lugares> getLugares() {
     return lugares;
   }
 
-  public void setLugares(List<String> lugares) {
+  public void setLugares(List<InlineResponse200Lugares> lugares) {
     this.lugares = lugares;
   }
 
@@ -58,8 +59,8 @@ public class RestaurantDto   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RestaurantDto restaurantDto = (RestaurantDto) o;
-    return Objects.equals(this.lugares, restaurantDto.lugares);
+    InlineResponse200 inlineResponse200 = (InlineResponse200) o;
+    return Objects.equals(this.lugares, inlineResponse200.lugares);
   }
 
   @Override
@@ -70,7 +71,7 @@ public class RestaurantDto   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RestaurantDto {\n");
+    sb.append("class InlineResponse200 {\n");
     
     sb.append("    lugares: ").append(toIndentedString(lugares)).append("\n");
     sb.append("}");

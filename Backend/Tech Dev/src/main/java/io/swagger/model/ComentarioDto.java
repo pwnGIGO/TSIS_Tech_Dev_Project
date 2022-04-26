@@ -9,13 +9,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * ComentarioDTO
+ * ComentarioDto
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-22T16:08:57.773-05:00[America/Mexico_City]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-25T20:53:21.707-05:00[America/Mexico_City]")
 
 
-public class ComentarioDTO   {
+public class ComentarioDto   {
   @JsonProperty("usuario")
   private String usuario = null;
 
@@ -25,7 +25,7 @@ public class ComentarioDTO   {
   @JsonProperty("descripcion")
   private String descripcion = null;
 
-  public ComentarioDTO usuario(String usuario) {
+  public ComentarioDto usuario(String usuario) {
     this.usuario = usuario;
     return this;
   }
@@ -34,7 +34,7 @@ public class ComentarioDTO   {
    * Get usuario
    * @return usuario
    **/
-  @Schema(description = "")
+  @Schema(example = "Rodrigo", description = "")
   
     public String getUsuario() {
     return usuario;
@@ -44,7 +44,7 @@ public class ComentarioDTO   {
     this.usuario = usuario;
   }
 
-  public ComentarioDTO fecha(String fecha) {
+  public ComentarioDto fecha(String fecha) {
     this.fecha = fecha;
     return this;
   }
@@ -53,7 +53,7 @@ public class ComentarioDTO   {
    * Get fecha
    * @return fecha
    **/
-  @Schema(description = "")
+  @Schema(example = "20/10/2022", description = "")
   
     public String getFecha() {
     return fecha;
@@ -63,7 +63,7 @@ public class ComentarioDTO   {
     this.fecha = fecha;
   }
 
-  public ComentarioDTO descripcion(String descripcion) {
+  public ComentarioDto descripcion(String descripcion) {
     this.descripcion = descripcion;
     return this;
   }
@@ -72,7 +72,7 @@ public class ComentarioDTO   {
    * Get descripcion
    * @return descripcion
    **/
-  @Schema(description = "")
+  @Schema(example = "blablabla bla", description = "")
   
     public String getDescripcion() {
     return descripcion;
@@ -91,10 +91,10 @@ public class ComentarioDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ComentarioDTO comentarioDTO = (ComentarioDTO) o;
-    return Objects.equals(this.usuario, comentarioDTO.usuario) &&
-        Objects.equals(this.fecha, comentarioDTO.fecha) &&
-        Objects.equals(this.descripcion, comentarioDTO.descripcion);
+    ComentarioDto comentarioDto = (ComentarioDto) o;
+    return Objects.equals(this.usuario, comentarioDto.usuario) &&
+        Objects.equals(this.fecha, comentarioDto.fecha) &&
+        Objects.equals(this.descripcion, comentarioDto.descripcion);
   }
 
   @Override
@@ -105,7 +105,7 @@ public class ComentarioDTO   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ComentarioDTO {\n");
+    sb.append("class ComentarioDto {\n");
     
     sb.append("    usuario: ").append(toIndentedString(usuario)).append("\n");
     sb.append("    fecha: ").append(toIndentedString(fecha)).append("\n");

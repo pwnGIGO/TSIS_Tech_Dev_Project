@@ -5,10 +5,11 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.ComentarioDTO;
+import io.swagger.model.ComentarioDto;
 import io.swagger.model.ErrorDto;
+import io.swagger.model.InlineResponse200;
+import io.swagger.model.InlineResponse2001;
 import io.swagger.model.LugarDto;
-import io.swagger.model.VueloDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -35,113 +36,22 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-22T16:08:57.773-05:00[America/Mexico_City]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-25T20:53:21.707-05:00[America/Mexico_City]")
 @Validated
 public interface V1Api {
 
-    @Operation(summary = "Elimina un lugar vuelo", description = "Regresa un objecto que contiene el vuelo eliminado", tags={ "Vuelos Aéreos" })
+    @Operation(summary = "HU-5:Recupera la lista completa de hoteles", description = "Regresa un objecto que contiene todos los hoteles", tags={ "Hoteles" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar eliminado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = VueloDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/vuelo/{vueloId}",
-        produces = { "application/json" }, 
-        method = RequestMethod.DELETE)
-    ResponseEntity<VueloDto> deleteFly(@Parameter(in = ParameterIn.PATH, description = "Identificador del vuelo generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("vueloId") String vueloId);
-
-
-    @Operation(summary = "Elimina un lugar turístico", description = "Regresa un objecto que contiene el lugar turístico eliminado", tags={ "Hoteles" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar eliminado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/hotel/{lugarId}",
-        produces = { "application/json" }, 
-        method = RequestMethod.DELETE)
-    ResponseEntity<LugarDto> deleteHotel(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId);
-
-
-    @Operation(summary = "Elimina un lugar turístico", description = "Regresa un objecto que contiene el lugar turístico eliminado", tags={ "Lugares Turísticos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar eliminado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/lugares/{lugarId}",
-        produces = { "application/json" }, 
-        method = RequestMethod.DELETE)
-    ResponseEntity<LugarDto> deletePlace(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId);
-
-
-    @Operation(summary = "Elimina un lugar turístico", description = "Regresa un objecto que contiene el lugar turístico eliminado", tags={ "Restaurantes" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar eliminado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/resuaturant/{lugarId}",
-        produces = { "application/json" }, 
-        method = RequestMethod.DELETE)
-    ResponseEntity<LugarDto> deleteRestaurant(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId);
-
-
-    @Operation(summary = "Recupera todos los comentarios de un lugar en especifico", description = "Regresa un objecto que contiene todos los comentarios de un lugar en especifico", tags={ "Lugares Turísticos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa"),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/lugares/{lugarId}/comentarios",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<Void> getComentarios(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId);
-
-
-    @Operation(summary = "Recupera la lista completa de vuelos", description = "Regresa un objecto que contiene todos los vuelos", tags={ "Vuelos Aéreos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = VueloDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/vuelo",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<VueloDto> getFlies();
-
-
-    @Operation(summary = "Recupera la información de un vuelo", description = "Regresa un objecto que contiene un vuelo", tags={ "Vuelos Aéreos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = VueloDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/vuelo/{vueloId}",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<VueloDto> getFly(@Parameter(in = ParameterIn.PATH, description = "Identificador del vuelo generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("vueloId") String vueloId);
-
-
-    @Operation(summary = "Permite dar de alta un lugar turístico", description = "Permite dar de alta un producto, se valida que dicho producto no haya sido dado de alta previamente con el mismo nombre", tags={ "Hoteles" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "201", description = "Creación exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "400", description = "No se pudo crear el producto exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/hotel",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.POST)
-    ResponseEntity<LugarDto> getHotel(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body);
-
-
-    @Operation(summary = "Recupera la lista completa de lugares turísticos", description = "Regresa un objecto que contiene todos los lugares turísticos", tags={ "Hoteles" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
+        @ApiResponse(responseCode = "200", description = "Consulta exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse2001.class))),
         
         @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
     @RequestMapping(value = "/v1/hotel",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<LugarDto> getHotels();
+    ResponseEntity<InlineResponse2001> getHotels();
 
 
-    @Operation(summary = "Recupera la información de un lugar turístico", description = "Regresa un objecto que contiene un lugar turístico", tags={ "Lugares Turísticos" })
+    @Operation(summary = "HU-2 y HU-6:Recupera la información de un lugar turístico", description = "Regresa un objecto que contiene un lugar turístico", tags={ "Lugares Turísticos" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Consulta exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
         
@@ -152,93 +62,22 @@ public interface V1Api {
     ResponseEntity<LugarDto> getPlace(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId);
 
 
-    @Operation(summary = "Recupera la lista completa de lugares turísticos", description = "Regresa un objecto que contiene todos los lugares turísticos", tags={ "Lugares Turísticos" })
+    @Operation(summary = "HU-1 y HU-3:Recupera la lista completa de lugares turísticos", description = "Regresa un objecto que contiene todos los lugares turísticos", tags={ "Lugares Turísticos" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
+        @ApiResponse(responseCode = "200", description = "Consulta exitosa!", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse200.class))),
+        
+        @ApiResponse(responseCode = "404", description = "No se ha encontrado...", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         
         @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
     @RequestMapping(value = "/v1/lugares",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<LugarDto> getPlaces();
+    ResponseEntity<InlineResponse200> getPlaces();
 
 
-    @Operation(summary = "Permite dar de alta un lugar turístico", description = "Permite dar de alta un producto, se valida que dicho producto no haya sido dado de alta previamente con el mismo nombre", tags={ "Restaurantes" })
+    @Operation(summary = "HU-4:Permite dar de alta un comentario en un lugar en especifico", description = "Permite dar de alta un comentario", tags={ "Lugares Turísticos" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "201", description = "Creación exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "400", description = "No se pudo crear el producto exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/restaurant",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.POST)
-    ResponseEntity<LugarDto> getRestaurant(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body);
-
-
-    @Operation(summary = "Recupera la lista completa de lugares turísticos", description = "Regresa un objecto que contiene todos los lugares turísticos", tags={ "Restaurantes" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/restaurant",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<LugarDto> getRestaurants();
-
-
-    @Operation(summary = "Modifica un vuelo", description = "Regresa el objecto modificado", tags={ "Vuelos Aéreos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Vuelo modificado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = VueloDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/vuelo/{vueloId}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.PATCH)
-    ResponseEntity<VueloDto> patchFly(@Parameter(in = ParameterIn.PATH, description = "Identificador del vuelo generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("vueloId") String vueloId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody VueloDto body);
-
-
-    @Operation(summary = "Modifica un lugar turístico", description = "Regresa el objecto modificado", tags={ "Hoteles" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar modificado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/hotel/{lugarId}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.PATCH)
-    ResponseEntity<LugarDto> patchHotel(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body);
-
-
-    @Operation(summary = "Modifica un lugar turístico", description = "Regresa el objecto modificado", tags={ "Lugares Turísticos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar modificado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/lugares/{lugarId}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.PATCH)
-    ResponseEntity<LugarDto> patchPlace(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body);
-
-
-    @Operation(summary = "Modifica un lugar turístico", description = "Regresa el objecto modificado", tags={ "Restaurantes" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar modificado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/resuaturant/{lugarId}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.PATCH)
-    ResponseEntity<LugarDto> patchRestaurant(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body);
-
-
-    @Operation(summary = "Permite dar de alta un comentario en un lugar en especifico", description = "Permite dar de alta un comentario", tags={ "Lugares Turísticos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "201", description = "Creación exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ComentarioDTO.class))),
         
         @ApiResponse(responseCode = "400", description = "No se pudo crear el comentario", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         
@@ -247,127 +86,7 @@ public interface V1Api {
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<ComentarioDTO> setComentarios(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody ComentarioDTO body);
-
-
-    @Operation(summary = "Permite dar de alta un vuelo", description = "Permite dar de alta un vuelo, se valida que dicho vuelo no haya sido dado de alta previamente", tags={ "Vuelos Aéreos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "201", description = "Creación exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = VueloDto.class))),
-        
-        @ApiResponse(responseCode = "400", description = "No se pudo crear el vuelo exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/vuelo",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.POST)
-    ResponseEntity<VueloDto> setFly(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody VueloDto body);
-
-
-    @Operation(summary = "Permite dar de alta un lugar turístico", description = "Permite dar de alta un lugar, se valida que dicho producto no haya sido dado de alta previamente con el mismo nombre", tags={ "Lugares Turísticos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "201", description = "Creación exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "400", description = "No se pudo crear el lugar exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/lugares",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.POST)
-    ResponseEntity<LugarDto> setPlace(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body);
-
-
-    @Operation(summary = "Actualiza un vuelo turístico", description = "Regresa el objecto actualizado", tags={ "Vuelos Aéreos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Vuelo actualizado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = VueloDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/vuelo/{vueloId}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.PUT)
-    ResponseEntity<VueloDto> updateFly(@Parameter(in = ParameterIn.PATH, description = "Identificador del vuelo generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("vueloId") String vueloId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody VueloDto body);
-
-
-    @Operation(summary = "Actualiza un lugar turístico", description = "Regresa el objecto actualizado", tags={ "Hoteles" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar actualizado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/hotel/{lugarId}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.PUT)
-    ResponseEntity<LugarDto> updateHotel(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body);
-
-
-    @Operation(summary = "Actualiza un lugar turístico", description = "Regresa el objecto actualizado", tags={ "Lugares Turísticos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar actualizado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/lugares/{lugarId}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.PUT)
-    ResponseEntity<LugarDto> updatePlace(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body);
-
-
-    @Operation(summary = "Actualiza un lugar turístico", description = "Regresa el objecto actualizado", tags={ "Restaurantes" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Lugar actualizado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/resuaturant/{lugarId}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.PUT)
-    ResponseEntity<LugarDto> updateRestaurant(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody LugarDto body);
-
-
-    @Operation(summary = "Recupera la información de un lugar turístico", description = "Regresa un objecto que contiene un lugar turístico", tags={ "Hoteles" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/hotel/{lugarId}",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<LugarDto> v1HotelLugarIdGet(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId);
-
-
-    @Operation(summary = "Recupera todos los lugares con su tipo de zona y su ID", description = "Regresa un objecto que contiene todos los lugares con su tipo de zona y su ID", tags={ "Lugares Turísticos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa"),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/lugares/id/tipo",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<Void> v1LugaresIdTipoGet();
-
-
-    @Operation(summary = "Recupera todos los lugares con su precio general y su ID", description = "Regresa un objecto que contiene todos los lugares con su precio general y su ID", tags={ "Lugares Turísticos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa"),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/lugares/precios",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<Void> v1LugaresPreciosGet();
-
-
-    @Operation(summary = "Recupera la información de un lugar turístico", description = "Regresa un objecto que contiene un lugar turístico", tags={ "Restaurantes" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LugarDto.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno durante la consulta", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))) })
-    @RequestMapping(value = "/v1/resuaturant/{lugarId}",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<LugarDto> v1ResuaturantLugarIdGet(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId);
+    ResponseEntity<LugarDto> setComentarios(@Parameter(in = ParameterIn.PATH, description = "Identificador del lugar generado durante la invocación a POST", required=true, schema=@Schema()) @PathVariable("lugarId") String lugarId, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody ComentarioDto body);
 
 }
 

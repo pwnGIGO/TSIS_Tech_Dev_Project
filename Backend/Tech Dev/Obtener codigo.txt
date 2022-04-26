@@ -1,0 +1,1 @@
+java -jar swagger-codegen-cli-3.0.31.jar generate -i swagger.yml -l spring -c config.json -o .
