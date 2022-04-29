@@ -19,61 +19,81 @@ paths:
     get:
       tags: # Los tags permiten agrupar las rutas en el swagger
       - Lugares Turísticos
-      summary: Recupera la lista completa de lugares turísticos
+      summary: HU-1 y HU-3:Recupera la lista completa de lugares turísticos
       description: 'Regresa un objecto que contiene todos los lugares turísticos'
       # El operationId generalmente corresponde al nombre del método en el controller
       operationId: 'getPlaces'
       responses:
         '200':
-          description: Consulta exitosa
+          description: Consulta exitosa!
           content:
             application/json:
-              schema:
-                "$ref": "#/components/schemas/lugarDto"
+              schema: 
+                type: object
+                properties:
+                  lugares:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: 12345678
+                          nombre:
+                            type: string
+                            example: Revolucion
+                          municipio:
+                            type: string
+                            example: Centro
+                          estado:
+                            type: string
+                            example: CDMX
+                          descripcion:
+                            type: string
+                            example: Monumento de la revolucion
+                          tipo:
+                            type: string
+                            example: monumento
+                          latitud:
+                            type: string
+                            example: -99.00
+                          longitud:
+                            type: string
+                            example: 12.00
+                          horarios:
+                            type: string
+                            example: De 9 a 5 pm
+                          precio:
+                            type: number
+                            example: 50
+                          comentarios:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                usuario:
+                                  type: string
+                                  example: Rodrigo
+                                fecha:
+                                  type: string
+                                  example: fecha...
+                                descripcion:
+                                  type: string
+                                  example: Yo creo que...
+                        
+        '404':
+            description: No se ha encontrado...
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/errorDto"
         '500':
             description: Error interno durante la consulta
             content:
               application/json:
                 schema:
                   "$ref": "#/components/schemas/errorDto"
-#postLugar
-    post:
-      tags:
-      - Lugares Turísticos
-      summary: Permite dar de alta un lugar turístico
-      description: 'Permite dar de alta un lugar, se valida que dicho producto no haya sido dado de alta previamente con el mismo nombre'
-      operationId: 'setPlace'
-      # En este ejemplo, como es un POST, lleva un RequestBody
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/lugarDto"
-      responses:
-        '201':
-          description: Creación exitosa
-          # La creación exitosa debe regresar un header Location y como cuerpo del mensaje el DTO
-          headers:
-            Location:
-              description: Url del lugar recien creado ej. /v1/lugares/1234
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/lugarDto"
-        '400':
-          description: No se pudo crear el lugar exitosamente
-          content:
-            application/json:
-              schema:
-                  "$ref": "#/components/schemas/errorDto"
-        '500':
-          description: Error interno durante la consulta
-          content:
-            application/json:
-              schema:
-                  "$ref": "#/components/schemas/errorDto"
+
 #getLugar
   /v1/lugares/{lugarId}:
     parameters: 
@@ -81,10 +101,11 @@ paths:
     get:
       tags: # Los tags permiten agrupar las rutas en el swagger
       - Lugares Turísticos
-      summary: Recupera la información de un lugar turístico
+      summary: HU-2 y HU-6:Recupera la información de un lugar turístico
       description: 'Regresa un objecto que contiene un lugar turístico'
       # El operationId generalmente corresponde al nombre del método en el controller
       operationId: 'getPlace'
+      
       responses:
         '200':
           description: Consulta exitosa
@@ -99,128 +120,22 @@ paths:
               application/json:
                 schema:
                   "$ref": "#/components/schemas/errorDto"
-#updateLugar
-    put:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Lugares Turísticos
-      summary: Actualiza un lugar turístico
-      description: 'Regresa el objecto actualizado'
-      operationId: 'updatePlace'
-      requestBody:
-        content:
-          application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-      responses:
-        '200':
-          description: Lugar actualizado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#patchLugar
-    patch:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Lugares Turísticos
-      summary: Modifica un lugar turístico
-      description: 'Regresa el objecto modificado'
-      operationId: 'patchPlace'
-      requestBody:
-        content:
-          application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-      responses:
-        '200':
-          description: Lugar modificado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#deleteLugar
-    delete:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Lugares Turísticos
-      summary: Elimina un lugar turístico
-      description: 'Regresa un objecto que contiene el lugar turístico eliminado'
-      operationId: 'deletePlace'
-      responses:
-        '200':
-          description: Lugar eliminado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-  
-  # getComentarios
+
+  # postComentarios
   /v1/lugares/{lugarId}/comentarios:
       parameters: 
-          - "$ref": "#/components/parameters/lugarId"
-      get:
-        tags:
-        - Lugares Turísticos 
-        summary: Recupera todos los comentarios de un lugar en especifico
-        description: 'Regresa un objecto que contiene todos los comentarios de un lugar en especifico'
-        operationId: 'getComentarios'
-        responses:
-          '200':
-            description: Consulta exitosa
-            content:
-              application/json:
-                examples:
-                  default:
-                    value: |-
-                      {
-                          "comentarios":[
-                            {
-                            "usuario":"Rodrigo",
-                            "fecha": "20/10/2022",
-                            "descripcion":"blablabla bla"
-                            },
-                            {
-                            "usuario":"Daniel",
-                            "fecha": "20/10/2022",
-                            "descripcion":"blablabla bla"
-                            }
-                            ]
-                      }
-          '500':
-              description: Error interno durante la consulta
-              content:
-                application/json:
-                  schema:
-                    "$ref": "#/components/schemas/errorDto"
-  
-  # postComentarios
+      - "$ref": "#/components/parameters/lugarId"
       post:
         tags:
         - Lugares Turísticos
-        summary: Permite dar de alta un comentario en un lugar en especifico
+        summary: HU-4:Permite dar de alta un comentario en un lugar en especifico
         description: 'Permite dar de alta un comentario'
         operationId: 'setComentarios'
         requestBody:
           content:
             application/json:
               schema:
-                  "$ref": "#/components/schemas/comentarioDTO"
+                  "$ref": "#/components/schemas/comentarioDto"
         responses:
           '201':
             description: Creación exitosa
@@ -232,7 +147,7 @@ paths:
             content:
               application/json:
                 schema:
-                  "$ref": "#/components/schemas/comentarioDTO"
+                  "$ref": "#/components/schemas/lugarDto"
           '400':
             description: No se pudo crear el comentario
             content:
@@ -245,232 +160,7 @@ paths:
               application/json:
                 schema:
                     "$ref": "#/components/schemas/errorDto"  
-                    
-  # getPrecios
-  /v1/lugares/precios:
-      get:
-        tags:
-        - Lugares Turísticos 
-        summary: Recupera todos los lugares con su precio general y su ID
-        description: 'Regresa un objecto que contiene todos los lugares con su precio general y su ID'
-        responses:
-          '200':
-            description: Consulta exitosa
-            content:
-              application/json:
-                examples:
-                  default:
-                    value: |-
-                      {
-                       "precios":[
-                          {
-                            "id":"2134457654324",
-                            "nombre": "Teotihuacan",
-                            "precios":["General $300 mxn", "...","..."]
-                          },
-                          {
-                            "id":"9376537851201",
-                            "nombre": "Chichén",
-                            "precios":["General $300 mxn", "...","..."]
-                          }
-                        ]
-                      }
-          '500':
-              description: Error interno durante la consulta
-              content:
-                application/json:
-                  schema:
-                    "$ref": "#/components/schemas/errorDto"
-                    
-  # getTipo
-  /v1/lugares/id/tipo:
-      get:
-        tags:
-        - Lugares Turísticos 
-        summary: Recupera todos los lugares con su tipo de zona y su ID
-        description: 'Regresa un objecto que contiene todos los lugares con su tipo de zona y su ID'
-        responses:
-          '200':
-            description: Consulta exitosa
-            content:
-              application/json:
-                examples:
-                  default:
-                    value: |-
-                      {
-                       "tipos":[
-                          {
-                            "id":"2134457654324",
-                            "tipo":"Zona arqueológica"
-                          },
-                          {
-                            "id":"9376537851201",
-                            "tipo":"Museo"
-                          }
-                        ]
-                      }
-          '500':
-              description: Error interno durante la consulta
-              content:
-                application/json:
-                  schema:
-                    "$ref": "#/components/schemas/errorDto"
   
-#################
-# Vuelos Aereos #
-#################
-  /v1/vuelo:
-#getVuelos
-    get:
-      tags:
-      - Vuelos Aéreos
-      summary: Recupera la lista completa de vuelos
-      description: 'Regresa un objecto que contiene todos los vuelos'
-      operationId: 'getFlies'
-      responses:
-        '200':
-          description: Consulta exitosa
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/vueloDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#postVuelo
-    post:
-      tags:
-      - Vuelos Aéreos
-      summary: Permite dar de alta un vuelo
-      description: 'Permite dar de alta un vuelo, se valida que dicho vuelo no haya sido dado de alta previamente'
-      operationId: 'setFly'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/vueloDto"
-      responses:
-        '201':
-          description: Creación exitosa
-          headers:
-            Location:
-              description: Url del vuelo recien creado ej. /v1/vuelos/1234
-              schema:
-                type: string
-                
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/vueloDto"
-        '400':
-          description: No se pudo crear el vuelo exitosamente
-          content:
-            application/json:
-              schema:
-                  "$ref": "#/components/schemas/errorDto"
-        '500':
-          description: Error interno durante la consulta
-          content:
-            application/json:
-              schema:
-                  "$ref": "#/components/schemas/errorDto"
-#getVuelo
-  /v1/vuelo/{vueloId}:
-    parameters: 
-      - "$ref": "#/components/parameters/vueloId"
-    get:
-      tags:
-      - Vuelos Aéreos
-      summary: Recupera la información de un vuelo
-      description: 'Regresa un objecto que contiene un vuelo'
-      operationId: 'getFly'
-      responses:
-        '200':
-          description: Consulta exitosa
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/vueloDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#updateVuelo
-    put:
-      tags:
-      - Vuelos Aéreos
-      summary: Actualiza un vuelo turístico
-      description: 'Regresa el objecto actualizado'
-      operationId: 'updateFly'
-      requestBody:
-        content:
-          application/json:
-              schema: 
-                "$ref": "#/components/schemas/vueloDto"
-      responses:
-        '200':
-          description: Vuelo actualizado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/vueloDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#patchLugar
-    patch:
-      tags:
-      - Vuelos Aéreos
-      summary: Modifica un vuelo
-      description: 'Regresa el objecto modificado'
-      operationId: 'patchFly'
-      requestBody:
-        content:
-          application/json:
-              schema: 
-                "$ref": "#/components/schemas/vueloDto"
-      responses:
-        '200':
-          description: Vuelo modificado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/vueloDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#deleteFly
-    delete:
-      tags:
-      - Vuelos Aéreos
-      summary: Elimina un lugar vuelo
-      description: 'Regresa un objecto que contiene el vuelo eliminado'
-      operationId: 'deleteFly'
-      responses:
-        '200':
-          description: Lugar eliminado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/vueloDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-
 ###########
 # Hoteles #
 ###########
@@ -479,312 +169,68 @@ paths:
     get:
       tags: # Los tags permiten agrupar las rutas en el swagger
       - Hoteles
-      summary: Recupera la lista completa de lugares turísticos
-      description: 'Regresa un objecto que contiene todos los lugares turísticos'
+      summary: HU-5:Recupera la lista completa de hoteles
+      description: 'Regresa un objecto que contiene todos los hoteles'
       # El operationId generalmente corresponde al nombre del método en el controller
       operationId: 'getHotels'
       responses:
         '200':
           description: Consulta exitosa
-          # La estructura del dto está dada por un schema (ver sección components/schemas al final del archivo)
           content:
             application/json:
               schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#postLugar
-    post:
-      tags:
-      - Hoteles
-      summary: Permite dar de alta un lugar turístico
-      description: 'Permite dar de alta un producto, se valida que dicho producto no haya sido dado de alta previamente con el mismo nombre'
-      operationId: 'getHotel'
-      # En este ejemplo, como es un POST, lleva un RequestBody
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/lugarDto"
-      responses:
-        '201':
-          description: Creación exitosa
-          # La creación exitosa debe regresar un header Location
-          # y como cuerpo del mensaje el DTO
-          headers:
-            Location:
-              description: Url del producto recien creado ej. /v1/productos/1234
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/lugarDto"
-        '400':
-          description: No se pudo crear el producto exitosamente
-          content:
-            application/json:
-              schema:
-                  "$ref": "#/components/schemas/errorDto"
-        '500':
-          description: Error interno durante la consulta
-          content:
-            application/json:
-              schema:
-                  "$ref": "#/components/schemas/errorDto"
-#getLugar
-  /v1/hotel/{lugarId}:
-    parameters: 
-      - "$ref": "#/components/parameters/lugarId"
-    get:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Hoteles
-      summary: Recupera la información de un lugar turístico
-      description: 'Regresa un objecto que contiene un lugar turístico'
-      # El operationId generalmente corresponde al nombre del método en el controller
-      #operationId: 'getProductTypes'
-      responses:
-        '200':
-          description: Consulta exitosa
-          # La estructura del dto está dada por un schema (ver sección components/schemas al final del archivo)
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#updateLugar
-    put:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Hoteles
-      summary: Actualiza un lugar turístico
-      description: 'Regresa el objecto actualizado'
-      operationId: 'updateHotel'
-      requestBody:
-        content:
-          application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-      responses:
-        '200':
-          description: Lugar actualizado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#patchLugar
-    patch:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Hoteles
-      summary: Modifica un lugar turístico
-      description: 'Regresa el objecto modificado'
-      operationId: 'patchHotel'
-      requestBody:
-        content:
-          application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-      responses:
-        '200':
-          description: Lugar modificado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#deleteLugar
-    delete:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Hoteles
-      summary: Elimina un lugar turístico
-      description: 'Regresa un objecto que contiene el lugar turístico eliminado'
-      operationId: 'deleteHotel'
-      responses:
-        '200':
-          description: Lugar eliminado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-
-################
-# Restaurantes #
-################
-  /v1/restaurant:
-#getRestaurantes
-    get:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Restaurantes
-      summary: Recupera la lista completa de lugares turísticos
-      description: 'Regresa un objecto que contiene todos los lugares turísticos'
-      # El operationId generalmente corresponde al nombre del método en el controller
-      operationId: 'getRestaurants'
-      responses:
-        '200':
-          description: Consulta exitosa
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#postLugar
-    post:
-      tags:
-      - Restaurantes
-      summary: Permite dar de alta un lugar turístico
-      description: 'Permite dar de alta un producto, se valida que dicho producto no haya sido dado de alta previamente con el mismo nombre'
-      operationId: 'getRestaurant'
-      # En este ejemplo, como es un POST, lleva un RequestBody
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/lugarDto"
-      responses:
-        '201':
-          description: Creación exitosa
-          # La creación exitosa debe regresar un header Location
-          # y como cuerpo del mensaje el DTO
-          headers:
-            Location:
-              description: Url del producto recien creado ej. /v1/productos/1234
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/lugarDto"
-        '400':
-          description: No se pudo crear el producto exitosamente
-          content:
-            application/json:
-              schema:
-                  "$ref": "#/components/schemas/errorDto"
-        '500':
-          description: Error interno durante la consulta
-          content:
-            application/json:
-              schema:
-                  "$ref": "#/components/schemas/errorDto"
-#getLugar
-  /v1/resuaturant/{lugarId}:
-    parameters: 
-      - "$ref": "#/components/parameters/lugarId"
-    get:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Restaurantes
-      summary: Recupera la información de un lugar turístico
-      description: 'Regresa un objecto que contiene un lugar turístico'
-      # El operationId generalmente corresponde al nombre del método en el controller
-      #operationId: 'getProductTypes'
-      responses:
-        '200':
-          description: Consulta exitosa
-          # La estructura del dto está dada por un schema (ver sección components/schemas al final del archivo)
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#updateLugar
-    put:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Restaurantes
-      summary: Actualiza un lugar turístico
-      description: 'Regresa el objecto actualizado'
-      operationId: 'updateRestaurant'
-      requestBody:
-        content:
-          application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-      responses:
-        '200':
-          description: Lugar actualizado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#patchLugar
-    patch:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Restaurantes
-      summary: Modifica un lugar turístico
-      description: 'Regresa el objecto modificado'
-      operationId: 'patchRestaurant'
-      requestBody:
-        content:
-          application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-      responses:
-        '200':
-          description: Lugar modificado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
-        '500':
-            description: Error interno durante la consulta
-            content:
-              application/json:
-                schema:
-                  "$ref": "#/components/schemas/errorDto"
-#deleteLugar
-    delete:
-      tags: # Los tags permiten agrupar las rutas en el swagger
-      - Restaurantes
-      summary: Elimina un lugar turístico
-      description: 'Regresa un objecto que contiene el lugar turístico eliminado'
-      operationId: 'deleteRestaurant'
-      responses:
-        '200':
-          description: Lugar eliminado
-          content:
-            application/json:
-              schema: 
-                "$ref": "#/components/schemas/lugarDto"
+                type: object
+                properties:
+                  hoteles:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                          nombre:
+                            type: string
+                            example: Hotel Finisterre
+                          direccion:
+                            type: string
+                            example: Calz. de Tlalpan 2043, Parque San Andrés, Coyoacán, 04040 Ciudad de México, CDMX
+                          telefono:
+                            type: string
+                            example: 525556899544
+                          sitioWeb:
+                            type: string
+                            example: http://www.hotelfinisterre.com.mx/
+                          descripcion:
+                            type: string
+                            example: Bulliciosa zona de moda con arquitectura colonial, el Jardín Centenario y el Museo Frida Kahlo.
+                          latitud:
+                            type: string
+                            example: 19.34512356266588
+                          longitud:
+                            type: string
+                            example: -99.14457352718428
+                          precio:
+                            type: number
+                            example: 1500
+                          tipo:
+                            type: string
+                            example: Hotel
+                          estacionamiento:
+                            type: string
+                            example: si
+                          piscina:
+                            type: string
+                            example: si
+                          habitacion:
+                            type: string
+                            example: si
+                          lavanderia:
+                            type: string
+                            example: si
+                          wifi:
+                            type: string
+                            example: si
+                          mascotas:
+                            type: string
+                            example: si
         '500':
             description: Error interno durante la consulta
             content:
@@ -810,28 +256,19 @@ components:
         type: string
         example: 1234
     
-    vueloId: # Vuelo ID
-      name: vueloId
+    tipoLugar: # tipo lugar ID
+      name: tipoLugar
       in: path
-      description: Identificador del vuelo generado durante la invocación a POST
+      description: Tipo de lugar turistic
       required: true
       schema:
         type: string
-        example: 1234
-    
+        example: Zona arqueologica
+        
     hotelId: # Hotel ID
       name: hotelId
       in: path
       description: Identificador del hotel generado durante la invocación a POST
-      required: true
-      schema:
-        type: string
-        example: 1234
-    
-    restaurantId: # Restaurant ID
-      name: restaurantId
-      in: path
-      description: Identificador del restaurant generado durante la invocación a POST
       required: true
       schema:
         type: string
@@ -846,16 +283,36 @@ components:
     lugarDto:
       type: object
       properties:
+        id:
+          type: string
+          example: 2134457654324
         nombre:
           type: string
+          example: Chichén Itzá
         municipio:
           type: string
+          example: Tinum
         estado:
           type: string
+          example: Yucatán
         descripcion:
           type: string
+          example: La ciudad es...
         tipo:
           type: string
+          example: Zona arqueologica
+        latitud:
+          type: string
+          example: 20.683032102156055
+        longitud:
+          type: string
+          example: 20.683032102156055
+        horarios:
+          type: string
+          example: Lunes a Viernes de 12:00 a 16:00, Sábado y Domingo de 09:00 a 18:00
+        precio:
+          type: number
+          example: 20
         comentarios:
           type: array
           items:
@@ -863,179 +320,64 @@ components:
             properties:
               usuario:
                 type: string
+                example: Rodrigo
               fecha:
-                type: string
+                  type: string
+                  example: 20/10/2022
               descripcion:
                 type: string
-                
-        geolocalizacion:
-          type: object
-          properties:
-            latitud:
-              type: string
-            longitud:
-              type: string
-        horarios:
-          type: array
-          items:
-            type: string
-        precios:
-          type: array
-          items:
-            type: string
-        
-      example: |-
-                  {
-                    "id": "2134457654324",
-                    "nombre": "Chichén Itzá",
-                    "municipio":"Tinum",
-                    "estado": "Yucatán",
-                    "descripcion":"La ciudad es...",
-                    "tipo":"Zona arqueológica",
-                    "geolocalizacion":{
-                      "latitud": "20.683032102156055",
-                      "longitud": "-88.5685510258526"
-                    },
-                    "horarios": [
-                      "Lunes a Viernes de 12:00 a 16:00",
-                      "Sábado y Domingo de 09:00 a 18:00"
-                    ],
-                    "precios":[
-                      "General $300 mxn",
-                      "Estudiante $100 mxn",
-                      "Adulto mayor $50 mxn"
-                    ]
-                  }
-#vueloDto
-    vueloDto:
-      type: object
-      properties:
-        aerolinea:
-          type: string
-        origen:
-          type: string
-        destino:
-          type: string
-        fechaSalida:
-          type: string
-        horaSalida:
-          type: string
-        fechaLlegada:
-          type: string
-        horaLlegada:
-          type: string
-        asiento:
-          type: string
-        precio:
-          type: number
-        tipoEquipaje:
-          type: string
-          
-      example: |-
-                  {
-                    "id": "2134457654324",
-                    "auerolinea": "Volaris",
-                    "origen":"Aeropuerto Internacional de la Ciudad de México",
-                    "destino": "Aeropuerto Internacional de Cancún",
-                    "fechaSalida": "01-05-2022",
-                    "horaSalida":"22:00",
-                    "fechaLlegada": "01-05-2022",
-                    "horaLlegada":"22:00",
-                    "asiento": "A-01",
-                    "precio": 2000.00,
-                    "tipoEquipaje": "Básico"
-                  }
-#Fin de vueloDto
-
-# Inicio de hospedajeDto
+                example: blablabla bla
+    
+    # Inicio de hospedajeDto
     hospedajeDto:
       type: object
       properties:
         nombre:
           type: string
-        municipio:
+          example: Hotel Finisterre
+        direccion:
           type: string
-        estado:
+          example: Calz. de Tlalpan 2043, Parque San Andrés, Coyoacán, 04040 Ciudad de México, CDMX
+        telefono:
           type: string
+          example: 525556899544
+        sitioWeb:
+          type: string
+          example: http://www.hotelfinisterre.com.mx/
         descripcion:
           type: string
-        geolocalizacion:
-          type: object
-          properties:
-            latitud:
-              type: string
-            longitud:
-              type: string
-        horarios:
-          type: array
-          items:
-            type: string
-        precios:
-          type: array
-          items:
-            type: string
-      example: |-
-                  {
-                    "nombre": "Hotel Finisterre",
-                    "direccion":"Calz. de Tlalpan 2043, Parque San Andrés, Coyoacán, 04040 Ciudad de México, CDMX",
-                    "contacto": {
-                      "telefonos": ["+525556899544"],
-                      "sitioWeb": "http://www.hotelfinisterre.com.mx/"
-                    },
-                    
-                    "descripcion":"Bulliciosa zona de moda con arquitectura colonial, el Jardín Centenario y el Museo Frida Kahlo.",
-                    
-                    "geolocalizacion":{
-                      "latitud": "19.34512356266588",
-                      "longitud": "-99.14457352718428"
-                    },
-                    "precios":{
-                      "sencilla": 3000.00,
-                      "doble": 3500.00
-                    },
-                    
-                    "tipo": "Hotel",
-                    
-                    "servicios": {
-                      "estacionamiento": "Si",
-                      "piscina": "No",
-                      "habitacion": "Si",
-                      "lavanderia": "Si",
-                      "wifi": "Si",
-                      "mascotas": "No"
-                    }
-                  }
+          example: Bulliciosa zona de moda con arquitectura colonial, el Jardín Centenario y el Museo Frida Kahlo.
+        latitud:
+          type: string
+          example: 19.34512356266588
+        longitud:
+          type: string
+          example: -99.14457352718428
+        precio:
+          type: number
+          example: 1500
+        tipo:
+          type: string
+          example: Hotel
+        estacionamiento:
+          type: string
+          example: si
+        piscina:
+          type: string
+          example: si
+        habitacion:
+          type: string
+          example: si
+        lavanderia:
+          type: string
+          example: si
+        wifi:
+          type: string
+          example: si
+        mascotas:
+          type: string
+          example: si
 #Fin de hospedajeDto
-
-# Inicio de lugarDto
-    restaurantDto:
-      type: object
-      properties:
-        lugares:
-          type: array
-          items:
-            type: string
-      example: |-
-                  {
-                    "nombre": "Chichén Itzá",
-                    "municipio":"Tinum",
-                    "estado": "Yucatán",
-                    "descripcion":"La ciudad es...",
-                    "geolocalizacion":{
-                      "latitud": "20.683032102156055",
-                      "longitud": "-88.5685510258526"
-                    },
-                    "horarios": [
-                      "Lunes a Viernes de 12:00 a 16:00",
-                      "Sábado y Domingo de 09:00 a 18:00"
-                    ],
-                    "precios":[
-                      "General $300 mxn",
-                      "Estudiante $100 mxn",
-                      "Adulto mayor $50 mxn"
-                    ]
-                  }
-#Fin de lugarDto
 
 #Inicio de errorDto
     errorDto:
@@ -1066,21 +408,18 @@ components:
       description: Respuesta en caso de error
 #Fin deerrorDto
 
-# comentarioDTO
-    comentarioDTO:
+# comentarioDto
+    comentarioDto:
       type: object
       properties:
         usuario:
           type: string
+          example: Rodrigo
         fecha:
             type: string
+            example: 20/10/2022
         descripcion:
           type: string
-      example: |-
-                  {
-                    "usuario": "Rodrigo",
-                    "fecha": "20/10/2022",
-                    "descripcion":"blablabla bla"
-                  }
+          example: blablabla bla
 #Fin ComentariosDTO
   

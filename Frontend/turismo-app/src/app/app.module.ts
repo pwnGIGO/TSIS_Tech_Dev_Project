@@ -2,26 +2,40 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MapaComponent } from './mapa/mapa.component';
 
 import { RouterModule } from '@angular/router';
 import { PrincipalComponent } from './principal/principal.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ListaLugaresComponent } from './lista-lugares/lista-lugares.component';
+import { PaginaTurismoComponent } from './pagina-turismo/pagina-turismo.component';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [
+
+  {path: '', redirectTo: '/app', pathMatch: 'full'},
+  {path: 'listaLugares', component: ListaLugaresComponent},
+
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     MapaComponent,
     PrincipalComponent
+    HeaderComponent,
+    FooterComponent,
+    ListaLugaresComponent,
+    PaginaTurismoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot([
-      {path: '', redirectTo: '/Principal', pathMatch: 'full'},
-      {path: 'Principal', component: PrincipalComponent},
-      {path: 'Mapa', component: MapaComponent},
-    ])
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.LugarDtoComentarios;
+import io.swagger.model.InlineResponse200Comentarios;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,13 +13,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * LugarDto
+ * InlineResponse200Lugares
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-25T20:53:21.707-05:00[America/Mexico_City]")
 
 
-public class LugarDto   {
+public class InlineResponse200Lugares   {
   @JsonProperty("id")
   private String id = null;
 
@@ -52,9 +52,9 @@ public class LugarDto   {
 
   @JsonProperty("comentarios")
   @Valid
-  private List<LugarDtoComentarios> comentarios = null;
+  private List<InlineResponse200Comentarios> comentarios = null;
 
-  public LugarDto id(String id) {
+  public InlineResponse200Lugares id(String id) {
     this.id = id;
     return this;
   }
@@ -63,7 +63,7 @@ public class LugarDto   {
    * Get id
    * @return id
    **/
-  @Schema(example = "2134457654324", description = "")
+  @Schema(example = "12345678", description = "")
   
     public String getId() {
     return id;
@@ -73,7 +73,7 @@ public class LugarDto   {
     this.id = id;
   }
 
-  public LugarDto nombre(String nombre) {
+  public InlineResponse200Lugares nombre(String nombre) {
     this.nombre = nombre;
     return this;
   }
@@ -82,7 +82,7 @@ public class LugarDto   {
    * Get nombre
    * @return nombre
    **/
-  @Schema(example = "Chichén Itzá", description = "")
+  @Schema(example = "Revolucion", description = "")
   
     public String getNombre() {
     return nombre;
@@ -92,7 +92,7 @@ public class LugarDto   {
     this.nombre = nombre;
   }
 
-  public LugarDto municipio(String municipio) {
+  public InlineResponse200Lugares municipio(String municipio) {
     this.municipio = municipio;
     return this;
   }
@@ -101,7 +101,7 @@ public class LugarDto   {
    * Get municipio
    * @return municipio
    **/
-  @Schema(example = "Tinum", description = "")
+  @Schema(example = "Centro", description = "")
   
     public String getMunicipio() {
     return municipio;
@@ -111,7 +111,7 @@ public class LugarDto   {
     this.municipio = municipio;
   }
 
-  public LugarDto estado(String estado) {
+  public InlineResponse200Lugares estado(String estado) {
     this.estado = estado;
     return this;
   }
@@ -120,7 +120,7 @@ public class LugarDto   {
    * Get estado
    * @return estado
    **/
-  @Schema(example = "Yucatán", description = "")
+  @Schema(example = "CDMX", description = "")
   
     public String getEstado() {
     return estado;
@@ -130,7 +130,7 @@ public class LugarDto   {
     this.estado = estado;
   }
 
-  public LugarDto descripcion(String descripcion) {
+  public InlineResponse200Lugares descripcion(String descripcion) {
     this.descripcion = descripcion;
     return this;
   }
@@ -139,7 +139,7 @@ public class LugarDto   {
    * Get descripcion
    * @return descripcion
    **/
-  @Schema(example = "La ciudad es...", description = "")
+  @Schema(example = "Monumento de la revolucion", description = "")
   
     public String getDescripcion() {
     return descripcion;
@@ -149,7 +149,7 @@ public class LugarDto   {
     this.descripcion = descripcion;
   }
 
-  public LugarDto tipo(String tipo) {
+  public InlineResponse200Lugares tipo(String tipo) {
     this.tipo = tipo;
     return this;
   }
@@ -158,7 +158,7 @@ public class LugarDto   {
    * Get tipo
    * @return tipo
    **/
-  @Schema(example = "Zona arqueologica", description = "")
+  @Schema(example = "monumento", description = "")
   
     public String getTipo() {
     return tipo;
@@ -168,7 +168,7 @@ public class LugarDto   {
     this.tipo = tipo;
   }
 
-  public LugarDto latitud(String latitud) {
+  public InlineResponse200Lugares latitud(String latitud) {
     this.latitud = latitud;
     return this;
   }
@@ -177,7 +177,7 @@ public class LugarDto   {
    * Get latitud
    * @return latitud
    **/
-  @Schema(example = "20.683032102156055", description = "")
+  @Schema(example = "-99.0", description = "")
   
     public String getLatitud() {
     return latitud;
@@ -187,7 +187,7 @@ public class LugarDto   {
     this.latitud = latitud;
   }
 
-  public LugarDto longitud(String longitud) {
+  public InlineResponse200Lugares longitud(String longitud) {
     this.longitud = longitud;
     return this;
   }
@@ -196,7 +196,7 @@ public class LugarDto   {
    * Get longitud
    * @return longitud
    **/
-  @Schema(example = "20.683032102156055", description = "")
+  @Schema(example = "12.0", description = "")
   
     public String getLongitud() {
     return longitud;
@@ -206,7 +206,7 @@ public class LugarDto   {
     this.longitud = longitud;
   }
 
-  public LugarDto horarios(String horarios) {
+  public InlineResponse200Lugares horarios(String horarios) {
     this.horarios = horarios;
     return this;
   }
@@ -215,7 +215,7 @@ public class LugarDto   {
    * Get horarios
    * @return horarios
    **/
-  @Schema(example = "Lunes a Viernes de 12:00 a 16:00, Sábado y Domingo de 09:00 a 18:00", description = "")
+  @Schema(example = "De 9 a 5 pm", description = "")
   
     public String getHorarios() {
     return horarios;
@@ -225,7 +225,7 @@ public class LugarDto   {
     this.horarios = horarios;
   }
 
-  public LugarDto precio(BigDecimal precio) {
+  public InlineResponse200Lugares precio(BigDecimal precio) {
     this.precio = precio;
     return this;
   }
@@ -234,7 +234,7 @@ public class LugarDto   {
    * Get precio
    * @return precio
    **/
-  @Schema(example = "20", description = "")
+  @Schema(example = "50", description = "")
   
     @Valid
     public BigDecimal getPrecio() {
@@ -245,14 +245,14 @@ public class LugarDto   {
     this.precio = precio;
   }
 
-  public LugarDto comentarios(List<LugarDtoComentarios> comentarios) {
+  public InlineResponse200Lugares comentarios(List<InlineResponse200Comentarios> comentarios) {
     this.comentarios = comentarios;
     return this;
   }
 
-  public LugarDto addComentariosItem(LugarDtoComentarios comentariosItem) {
+  public InlineResponse200Lugares addComentariosItem(InlineResponse200Comentarios comentariosItem) {
     if (this.comentarios == null) {
-      this.comentarios = new ArrayList<LugarDtoComentarios>();
+      this.comentarios = new ArrayList<InlineResponse200Comentarios>();
     }
     this.comentarios.add(comentariosItem);
     return this;
@@ -264,11 +264,11 @@ public class LugarDto   {
    **/
   @Schema(description = "")
       @Valid
-    public List<LugarDtoComentarios> getComentarios() {
+    public List<InlineResponse200Comentarios> getComentarios() {
     return comentarios;
   }
 
-  public void setComentarios(List<LugarDtoComentarios> comentarios) {
+  public void setComentarios(List<InlineResponse200Comentarios> comentarios) {
     this.comentarios = comentarios;
   }
 
@@ -281,18 +281,18 @@ public class LugarDto   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LugarDto lugarDto = (LugarDto) o;
-    return Objects.equals(this.id, lugarDto.id) &&
-        Objects.equals(this.nombre, lugarDto.nombre) &&
-        Objects.equals(this.municipio, lugarDto.municipio) &&
-        Objects.equals(this.estado, lugarDto.estado) &&
-        Objects.equals(this.descripcion, lugarDto.descripcion) &&
-        Objects.equals(this.tipo, lugarDto.tipo) &&
-        Objects.equals(this.latitud, lugarDto.latitud) &&
-        Objects.equals(this.longitud, lugarDto.longitud) &&
-        Objects.equals(this.horarios, lugarDto.horarios) &&
-        Objects.equals(this.precio, lugarDto.precio) &&
-        Objects.equals(this.comentarios, lugarDto.comentarios);
+    InlineResponse200Lugares inlineResponse200Lugares = (InlineResponse200Lugares) o;
+    return Objects.equals(this.id, inlineResponse200Lugares.id) &&
+        Objects.equals(this.nombre, inlineResponse200Lugares.nombre) &&
+        Objects.equals(this.municipio, inlineResponse200Lugares.municipio) &&
+        Objects.equals(this.estado, inlineResponse200Lugares.estado) &&
+        Objects.equals(this.descripcion, inlineResponse200Lugares.descripcion) &&
+        Objects.equals(this.tipo, inlineResponse200Lugares.tipo) &&
+        Objects.equals(this.latitud, inlineResponse200Lugares.latitud) &&
+        Objects.equals(this.longitud, inlineResponse200Lugares.longitud) &&
+        Objects.equals(this.horarios, inlineResponse200Lugares.horarios) &&
+        Objects.equals(this.precio, inlineResponse200Lugares.precio) &&
+        Objects.equals(this.comentarios, inlineResponse200Lugares.comentarios);
   }
 
   @Override
@@ -303,7 +303,7 @@ public class LugarDto   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LugarDto {\n");
+    sb.append("class InlineResponse200Lugares {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    nombre: ").append(toIndentedString(nombre)).append("\n");
