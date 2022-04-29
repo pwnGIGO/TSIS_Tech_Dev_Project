@@ -7,13 +7,18 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 /**
  * ComentarioDto
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-25T20:53:21.707-05:00[America/Mexico_City]")
-
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class ComentarioDto   {
   @JsonProperty("usuario")
