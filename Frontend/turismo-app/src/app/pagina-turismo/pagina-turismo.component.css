@@ -1,0 +1,23 @@
+.descripcion {
+  border: 2.5px solid #000000;
+}
+#verHoteles {
+  display: flex;
+  align-items: center;
+}
+.foto {
+  width: 97%;
+  height: auto;
+}
+#comentarios {
+    height:220px;
+    overflow-y: scroll;
+}
+.border1{
+  margin-top: 50px;
+}
+#descripcion {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
