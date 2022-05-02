@@ -12,10 +12,12 @@ import { ListaLugaresComponent } from './lista-lugares/lista-lugares.component';
 import { PaginaTurismoComponent } from './pagina-turismo/pagina-turismo.component';
 import { HomeComponent } from './home/home.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 const routes: Routes = [
 
   {path: '', redirectTo: '/app', pathMatch: 'full'},
-  {path: 'listaLugares', component: ListaLugaresComponent},
+  {path: 'lugares', component: ListaLugaresComponent},
 
 ];
 
@@ -32,7 +34,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
