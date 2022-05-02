@@ -1,1 +1,72 @@
-<p>pagina-turismo works!</p>
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row">
+        <h1>{{nombre}}</h1>
+        <div class="col-sm-5">
+            <div>
+            <img src="{{foto}}" class="foto" alt="Image did not load...">
+            </div>
+            <div class="container">
+                <h2>Comentarios</h2>
+                <div id="comentarios">
+                    <table class="table table-hover table-responsive">
+                        <tbody>
+                        <tr>
+                            <td>20/04/2018<br>DanoPrz</td>
+                            <td>Estoy muy feliz de haber podido conocer este lugar, es impresionante la cantidad
+                                de belleza que existe en un sitio como este!!
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>20/04/2022<br>JosueRamoz</td>
+                            <td>Estoy muy feliz de haber podido conocer este lugar, es impresionante la cantidad
+                                de belleza que existe en un sitio como este!!
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>20/04/2022<br>ZzzzJoelB</td>
+                            <td>Estoy muy feliz de haber podido conocer este lugar, es impresionante la cantidad
+                                de belleza que existe en un sitio como este!!
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>20/04/2022<br>ZzzzJoelB</td>
+                            <td>Estoy muy feliz de haber podido conocer este lugar, es impresionante la cantidad
+                                de belleza que existe en un sitio como este!!
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-group">
+                        <button class="btn btn-secondary" type="button"> 
+                        Comentar
+                        </button>
+                    <input class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <h2>| {{tipo}} |</h2>
+            <div class="descripcion">
+                <p id="descripcion">{{descripcion}}</p>
+            </div>
+            <div class="container-fluid border1">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h4>Precios</h4>
+                        <p>{{precios}}</p>
+                        <h4>Horarios</h4>
+                        <p>{{horarios}}</p>
+                    </div>
+                    <div class="col-sm-4" id="verHoteles">
+                        <button class="btn btn-secondary" type="button"> 
+                            Ver hoteles
+                        </button>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
