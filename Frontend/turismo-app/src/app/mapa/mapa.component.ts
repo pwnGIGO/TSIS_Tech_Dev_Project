@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 import { Observable, Subscriber } from 'rxjs';
 import * as L from 'leaflet'; 
 
@@ -10,9 +10,21 @@ import * as L from 'leaflet';
 })
 export class MapaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   map: any;
+
+  lugar = 
+  {
+    "_id": "1",
+    isFavorite: false,
+    nombre: 'Chichén Itzá',
+    estado: 'Yucatán',
+    tipo: "Zona arqueológica",
+    photo: 'https://www.infragistics.com/angular-demos-lob/assets/images/men/27.jpg',
+    latitud: "20.684395278089813",
+    longitud: "-88.56746073197196"
+  }
 
   ngOnInit(){   
     this.loadMap();
@@ -20,8 +32,10 @@ export class MapaComponent implements OnInit {
 
   private loadMap(): void {
     // Coordenadas de la UAM-I
-    let lat = 19.3623615
-    let long = -99.073
+    let jeje = 12.113838
+    console.log(typeof(jeje))
+    let lat = Number(this.lugar.latitud)
+    let long = Number(this.lugar.longitud)
 
     this.map = L.map('map', {
        center: [lat, long], // Ubicacion actual

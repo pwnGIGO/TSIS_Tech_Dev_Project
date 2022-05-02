@@ -1,9 +1,11 @@
 <app-header></app-header>
+
 <div class="container text-center">
   <router-outlet></router-outlet>
   <p class="h4 info">TonalliApp es la mejor página de turismo en el mundo.
     ¡Puedes ver lugares en toda la republica y ver hoteles cerca!</p>
-  <button class="btn btn-secondary">Visualizar lugares</button>
+  <!--button class="btn btn-secondary" (click)="muestraLugares()">Visualizar lugares</button-->
+  <button class="btn btn-secondary" [routerLink]="['lugares']">Visualizar lugares</button>
 
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">

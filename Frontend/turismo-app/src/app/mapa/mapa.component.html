@@ -1,8 +1,10 @@
-<p>mapa works!</p>
+
+<app-header></app-header>
 
 <div class="container-fluid py-3">
-  <h1>Angular Leaflet</h1>
-
+  <h1>{{ lugar.nombre }}</h1>
+  <h3>{{ lugar.latitud }}, {{ lugar.longitud }}</h3>
+  
   <div id="map"></div>
   
 </div>

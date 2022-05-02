@@ -13,13 +13,29 @@ import { PaginaTurismoComponent } from './pagina-turismo/pagina-turismo.componen
 import { HomeComponent } from './home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-const routes: Routes = [
+import { FormsModule } from "@angular/forms";
+
+import { 
+  IgxAvatarModule,
+  IgxIconModule,
+  IgxListModule,
+  IgxRippleModule,
+  IgxSliderModule,
+  IgxToastModule,
+  IgxButtonModule, 
+  IgxFilterModule,
+  IgxInputGroupModule,
+  IgxButtonGroupModule
+ } from "igniteui-angular";
+
+/*const routes: Routes = [
 
   {path: '', redirectTo: '/app', pathMatch: 'full'},
   {path: 'lugares', component: ListaLugaresComponent},
 
-];
+];*/
 
 @NgModule({
   declarations: [
@@ -34,10 +50,23 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes),
-    HttpClientModule
+    //RouterModule.forRoot(routes),
+    HttpClientModule,
+    IgxAvatarModule,
+    IgxFilterModule,
+    IgxToastModule,
+    IgxIconModule,
+    IgxListModule,
+    IgxInputGroupModule,
+    IgxButtonGroupModule,
+    IgxRippleModule,
+    IgxSliderModule,
+    IgxButtonModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

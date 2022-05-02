@@ -12,4 +12,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  muestraLugares(){
+    console.log("Navengando a lista de lugares...")
+  }
 }

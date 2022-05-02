@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-pagina-turismo',
@@ -13,7 +15,8 @@ export class PaginaTurismoComponent implements OnInit {
   precios: string =""
   horarios: string=""
 
-  constructor() { 
+  lugarId = "jeje"
+  constructor(private http: HttpClient, private route: Router) { 
     this.nombre= "Píramide Kukulcan"
     this.foto = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Chichen_Itza_3.jpg/1200px-Chichen_Itza_3.jpg"
     this.tipo = "Zona arqueologica"
@@ -25,4 +28,12 @@ export class PaginaTurismoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
+  public abrir(n) {
+    console.log("abriendo", n)
+    this.route.navigate(['/mapa/' + n]);
+  }
+
 }
+

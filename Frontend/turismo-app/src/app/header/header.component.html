@@ -1,5 +1,10 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <span class="navbar-brand" style="font-size: 30px;">{{ title }}</span>
+    <a style="cursor:pointer;" >
+      <span class="navbar-brand" [routerLink]="['/']" style="font-size: 30px;">{{ title }}</span>
+
+      <igx-avatar *ngIf="muestraBoton" igxListThumbnail src="/assets/img/boton-de-retorno.png" (click)="goBack()"></igx-avatar>
+
+    </a>
   </div>
 </nav>

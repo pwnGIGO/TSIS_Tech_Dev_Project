@@ -3,18 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { PaginaTurismoComponent } from './pagina-turismo/pagina-turismo.component';
+import { ListaLugaresComponent } from './lista-lugares/lista-lugares.component';
 
 const routes: Routes = [
-  {
-    path: 'listaLugares/:id',
-    component: PaginaTurismoComponent
-  },
   {
     path: '',
     component: HomeComponent
   },
   {
-    path: 'mapa',
+    path: 'lugares',
+    component: ListaLugaresComponent
+  },
+  {
+    path: 'lugares/:id',
+    component: PaginaTurismoComponent
+  },
+  {
+    path: 'mapa/:id',
     component:MapaComponent
   }
 ];
@@ -23,4 +28,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
