@@ -6,7 +6,7 @@ import { PaginaTurismoComponent } from './pagina-turismo/pagina-turismo.componen
 
 const routes: Routes = [
   {
-    path: 'lugares/:id',
+    path: 'listaLugares/:id',
     component: PaginaTurismoComponent
   },
   {
