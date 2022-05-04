@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscriber } from 'rxjs';
+import {Router, ActivatedRoute } from '@angular/router';
+
 import * as L from 'leaflet'; 
 
 @Component({
@@ -10,30 +12,38 @@ import * as L from 'leaflet';
 })
 export class MapaComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
-
   map: any;
+  lugar = {
+    "nombre": "",
+    "foto": "",
+    "descripcion": "",
+    "tipo": "",
+    "horarios": "",
+    "precios": "",
+    "latitud": "",
+    "longitud": ""
+  }
+  lugarId: string
+  url: string = 'https://coviuam.uam.mx:5001/lugares/';
 
-  lugar = 
-  {
-    "_id": "1",
-    isFavorite: false,
-    nombre: 'Chichén Itzá',
-    estado: 'Yucatán',
-    tipo: "Zona arqueológica",
-    photo: 'https://www.infragistics.com/angular-demos-lob/assets/images/men/27.jpg',
-    latitud: "20.684395278089813",
-    longitud: "-88.56746073197196"
+  constructor(private http: HttpClient, private route: Router, private activatedRoute: ActivatedRoute ) { 
+    this.lugarId = this.activatedRoute.snapshot.params['id'];
+    console.log(this.lugarId)
+    this.http.get<any>(this.url+this.lugarId).subscribe(
+      datos => {
+        console.log(datos)
+        this.lugar = datos["project"]
+        this.loadMap();
+      }, error => console.log("Ocurrió un error en la petición HTTP!")    
+    );
   }
 
-  ngOnInit(){   
-    this.loadMap();
-  }
+
+
+  ngOnInit(){}
 
   private loadMap(): void {
-    // Coordenadas de la UAM-I
-    let jeje = 12.113838
-    console.log(typeof(jeje))
+    
     let lat = Number(this.lugar.latitud)
     let long = Number(this.lugar.longitud)
 

@@ -14,7 +14,7 @@
         </ng-template>
         <igx-list-item isHeader="true">Lugares</igx-list-item>
         <igx-list-item #item *ngFor="let lugar of lugares" igxRipple="pink" igxRippleTarget=".igx-list__item-content" style="cursor:pointer;">
-            <igx-avatar igxListThumbnail [src]="lugar.photo" roundShape="true"></igx-avatar>
+            <igx-avatar igxListThumbnail [src]="lugar.foto" roundShape="true"></igx-avatar>
             <span (click)="abrir(lugar._id)" igxListLineTitle>{{ lugar.nombre }}</span>
             <span (click)="abrir(lugar._id)" igxListLineSubTitle>{{ lugar.estado }}</span>
             <span (click)="abrir(lugar._id)" igxListLineSubTitle>{{ lugar.tipo }}</span>
