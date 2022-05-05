@@ -1,27 +1,50 @@
 <app-header></app-header>
-
-<div class="list-sample">
+<div class="contenedor">
+  <div class="list-sample">
     <igx-list [allowLeftPanning]="true" [allowRightPanning]="true" #mainIgxList>
-        <ng-template igxListItemLeftPanning>
-            <div class="listItemLeftPanningStyle">
-                <igx-icon>delete</igx-icon>Delete
-            </div>
-        </ng-template>
-        <ng-template igxListItemRightPanning>
-            <div class="listItemRightPanningStyle">
-                <igx-icon>call</igx-icon>Dial
-            </div>
-        </ng-template>
-        <igx-list-item isHeader="true">Lugares</igx-list-item>
-        <igx-list-item #item *ngFor="let lugar of lugares" igxRipple="pink" igxRippleTarget=".igx-list__item-content" style="cursor:pointer;">
-            <igx-avatar igxListThumbnail [src]="lugar.foto" roundShape="true"></igx-avatar>
-            <span (click)="abrir(lugar._id)" igxListLineTitle>{{ lugar.nombre }}</span>
-            <span (click)="abrir(lugar._id)" igxListLineSubTitle>{{ lugar.estado }}</span>
-            <span (click)="abrir(lugar._id)" igxListLineSubTitle>{{ lugar.tipo }}</span>
-            <igx-icon igxListAction [style.color]="lugar.isFavorite ? 'orange' : 'lightgray'" (click)="toggleFavorite(lugar)">star</igx-icon>
-        </igx-list-item>
+      <ng-template igxListItemLeftPanning>
+        <div class="listItemLeftPanningStyle">
+          <igx-icon>delete</igx-icon>Delete
+        </div>
+      </ng-template>
+      <ng-template igxListItemRightPanning>
+        <div class="listItemRightPanningStyle">
+          <igx-icon>call</igx-icon>Dial
+        </div>
+      </ng-template>
+      <igx-list-item isHeader="true" style="font-size: 28px; font-weight:bold; margin-bottom:15px;">Lugares
+      </igx-list-item>
+      <igx-list-item class="lista" #item *ngFor="let lugar of lugares" igxRipple="pink"
+        igxRippleTarget=".igx-list__item-content" (click)="abrir(lugar._id)" s style="cursor:pointer;">
+        <igx-avatar class="img" igxListThumbnail [src]="lugar.foto"></igx-avatar>
+        <span class="lugarTitulo" (click)="abrir(lugar._id)" igxListLineTitle>{{ lugar.nombre }}</span>
+        <span class="estado" (click)="abrir(lugar._id)" igxListLineSubTitle>{{ lugar.estado }}</span>
+        <span class="tipo" (click)="abrir(lugar._id)" igxListLineSubTitle>{{ lugar.tipo }}</span>
+        <span class="precio" (click)="abrir(lugar._id)" igxListLineSubTitle>Precio por persona: ${{ lugar.precio }}
+          MXN</span>
+      </igx-list-item>
     </igx-list>
     <igx-toast #toast></igx-toast>
+  </div>
+
+  <div class="filtros">
+    <h5 class="titulo-filtro">Filtros</h5>
+    <form class="formulario">
+      <label for="museo" class="checkbox"> <input type="checkbox" name="museo" id=""> Museo</label>
+      <label for="zonaA" class="checkbox"> <input type="checkbox" name="zonaA" id=""> Zona Arqueológica</label>
+      <label for="playa" class="checkbox"> <input type="checkbox" name="playa" id=""> Playa</label>
+      <label for="pMagico" class="checkbox"> <input type="checkbox" name="pMagico" id=""> Pueblo mágico</label>
+
+      <label for="pMax" class="number-input"> <input class="set-width" placeholder="400" type="number" name="pMax">
+        Precio max.</label>
+
+      <label for="pMin" class="number-input"> <input class="set-width" placeholder="200" type="number" name="pMin">
+        Precio min.</label>
+
+      <button class="btn btn-dark">Buscar</button>
+    </form>
+  </div>
 </div>
+
 
 <app-footer></app-footer>
