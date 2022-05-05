@@ -1,55 +1,55 @@
 <app-header></app-header>
 
 <div class="container-fluid">
-    <div class="row">
-        <h1>{{lugar.nombre}}</h1>
-        <div class="col-sm-5">
-            <div>
-            <img src="{{lugar.foto}}" class="foto" alt="Image did not load...">
-            </div>
-            <div class="container">
-                <h2>Comentarios</h2>
-                <div id="comentarios">
-                    <table class="table table-hover table-responsive">
-                        <tbody>
-                        <tr *ngFor="let comentario of comentarios">
-                            <td>{{ comentario.fecha }}<br>{{ comentario.usuario }}</td>
-                            <td>{{ comentario.descripcion }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="input-group">
-                        <button class="btn btn-secondary" type="button"> 
-                        Comentar
-                        </button>
-                    <input class="form-control">
-                </div>
-            </div>
+  <div class="row">
+    <h1>{{lugar.nombre}}</h1>
+    <div class="col-sm-5">
+      <div>
+        <img src="{{lugar.foto}}" class="foto" alt="Image did not load...">
+      </div>
+      <div class="container">
+        <h2>Comentarios</h2>
+        <div id="comentarios">
+          <table class="table table-hover table-responsive">
+            <tbody>
+              <tr *ngFor="let comentario of comentarios">
+                <td>{{ comentario.fecha }}<br>{{ comentario.usuario }}</td>
+                <td>{{ comentario.descripcion }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="col-sm-7">
-            <button class="btn btn-secondary" type="button" (click)="abrir(lugarId)"> Mapa</button>
-            <h2>| {{lugar.tipo}} |</h2>
-            <div class="descripcion">
-                <p id="descripcion">{{lugar.descripcion}}</p>
-            </div>
-            <div class="container-fluid border1">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h4>Precios</h4>
-                        <p>{{lugar.precios}}</p>
-                        <h4>Horarios</h4>
-                        <p>{{lugar.horarios}}</p>
-                    </div>
-                    <div class="col-sm-4" id="verHoteles">
-                        <button class="btn btn-secondary" type="button"> 
-                            Ver hoteles
-                        </button>
-                    </div>   
-                </div>
-            </div>
+        <div class="input-group">
+          <button class="btn btn-secondary" type="button">
+            Comentar
+          </button>
+          <input class="form-control">
         </div>
+      </div>
     </div>
+    <div class="col-sm-7">
+      <button class="btn btn-secondary" type="button" (click)="abrir(lugarId)"> Mapa</button>
+      <h2>| {{lugar.tipo}} |</h2>
+      <div class="descripcion">
+        <p id="descripcion">{{lugar.descripcion}}</p>
+      </div>
+      <div class="container-fluid border1">
+        <div class="row">
+          <div class="col-sm-8">
+            <h4>Precios</h4>
+            <p>{{lugar.precios}}</p>
+            <h4>Horarios</h4>
+            <p>{{lugar.horarios}}</p>
+          </div>
+          <div class="col-sm-4" id="verHoteles">
+            <button class="btn btn-secondary" type="button" (click)="abrirHoteles()">
+              Ver hoteles
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
