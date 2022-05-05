@@ -43,5 +43,10 @@ export class PaginaTurismoComponent implements OnInit {
     this.route.navigate(['/mapa/' + id]);
   }
 
+  public abrirHoteles() {
+    console.log("abriendo")
+    this.route.navigate(['/hoteles']);
+  }
+
 }
 

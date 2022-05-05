@@ -39,8 +39,4 @@ export class ListaLugaresComponent implements OnInit {
     this.route.navigate(['/lugares/' + id]);
   }
 
-  public toggleFavorite(contact: any) {
-    contact.isFavorite = !contact.isFavorite;
-  }
-
 }
