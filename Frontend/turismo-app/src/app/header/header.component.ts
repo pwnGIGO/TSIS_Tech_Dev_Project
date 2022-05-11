@@ -20,12 +20,12 @@ export class HeaderComponent {
     }
 
     goBack(){
-        console.log(typeof(this.router.url), this.router.url)
+        //console.log(typeof(this.router.url), this.router.url)
 
         if(this.router.url == "/"){
             console.log("Estas en la raiz")
         }else{
-            console.log("Regresanding")
+            //console.log("Regresanding")
             this._location.back();
         }
     }

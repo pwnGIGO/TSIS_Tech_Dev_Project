@@ -24,7 +24,7 @@ export class PaginaTurismoComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: Router, private activatedRoute: ActivatedRoute ) { 
     this.lugarId = this.activatedRoute.snapshot.params['id'];
-    console.log(this.lugarId)
+    //console.log(this.lugarId)
   }
 
   ngOnInit(): void {
@@ -32,19 +32,19 @@ export class PaginaTurismoComponent implements OnInit {
       datos => {
         this.lugar = datos["project"]
         this.comentarios = datos["project"]["comentarios"]
-        console.log(datos)
-        console.log(this.comentarios)
+        //console.log(datos)
+        //console.log(this.comentarios)
       }, error => console.log("Ocurrió un error en la petición HTTP!")    
     );
   }
 
   public abrir(id) {
-    console.log("abriendo", id)
+    //console.log("abriendo", id)
     this.route.navigate(['/mapa/' + id]);
   }
 
   public abrirHoteles() {
-    console.log("abriendo")
+    //console.log("abriendo")
     this.route.navigate(['/hoteles']);
   }
 

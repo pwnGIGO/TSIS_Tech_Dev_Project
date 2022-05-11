@@ -28,7 +28,7 @@ export class ListaLugaresComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<any>(this.url).subscribe(
       datos => {
-        console.log(datos)
+        //console.log(datos)
         this.lugares = datos["projects"]
       }, error => console.log("Ocurrió un error en la petición HTTP!")    
     );

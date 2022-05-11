@@ -28,17 +28,15 @@ export class MapaComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: Router, private activatedRoute: ActivatedRoute ) { 
     this.lugarId = this.activatedRoute.snapshot.params['id'];
-    console.log(this.lugarId)
+    //console.log(this.lugarId)
     this.http.get<any>(this.url+this.lugarId).subscribe(
       datos => {
-        console.log(datos)
+        //console.log(datos)
         this.lugar = datos["project"]
         this.loadMap();
       }, error => console.log("Ocurrió un error en la petición HTTP!")    
     );
   }
-
-
 
   ngOnInit(){}
 
@@ -49,13 +47,15 @@ export class MapaComponent implements OnInit {
 
     this.map = L.map('map', {
        center: [lat, long], // Ubicacion actual
-       zoom: 14,
+       zoom: 50,
        layers: [L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")],
        zoomControl: true
      });
 
-    this.map.flyTo([lat, long], 13);
+    this.map.flyTo([lat, long], 15);
+
     const marker = L.marker([lat, long]).bindPopup('Angular Leaflet');
+
     marker.addTo(this.map);
   }
 }

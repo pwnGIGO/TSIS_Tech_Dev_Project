@@ -1,5 +1,7 @@
 <app-header></app-header>
+
 <div class="contenedor">
+  
   <div class="list-sample">
     <igx-list [allowLeftPanning]="true" [allowRightPanning]="true" #mainIgxList>
       <ng-template igxListItemLeftPanning>
@@ -29,7 +31,7 @@
 
   <div class="filtros">
     <h5 class="titulo-filtro">Filtros</h5>
-    <form class="formulario">
+    <div class="formulario">
       <label for="museo" class="checkbox"> <input type="checkbox" name="museo" id=""> Museo</label>
       <label for="zonaA" class="checkbox"> <input type="checkbox" name="zonaA" id=""> Zona Arqueológica</label>
       <label for="playa" class="checkbox"> <input type="checkbox" name="playa" id=""> Playa</label>
@@ -42,8 +44,9 @@
         Precio min.</label>
 
       <button class="btn btn-dark">Buscar</button>
-    </form>
+    </div>
   </div>
+
 </div>
 
 

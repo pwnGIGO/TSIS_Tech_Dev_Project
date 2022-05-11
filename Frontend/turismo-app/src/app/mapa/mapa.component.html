@@ -2,9 +2,10 @@
 <app-header></app-header>
 
 <div class="container-fluid py-3">
-  <h1>{{ lugar.nombre }}</h1>
-  <h3>{{ lugar.latitud }}, {{ lugar.longitud }}</h3>
-  
-  <div id="map"></div>
-  
+  <h1 align="center">{{ lugar.nombre }}</h1>
+  <h2 align="center">{{ lugar.descripcion }}</h2>
+  <h4 >Coordenadas: [{{ lugar.latitud }}, {{ lugar.longitud }}]</h4>
+  <div id="map"></div>  
 </div>
+
+<app-footer></app-footer>
