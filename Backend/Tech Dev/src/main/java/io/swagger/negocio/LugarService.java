@@ -18,10 +18,9 @@ public class LugarService {
 	
 	public LugarDto buscarPorId(String id) {
 		Long idLugar = Long.parseLong(id);
-		Optional<Lugar> lugar = null;
-		lugar= lugarRepository.findById(idLugar);
+		Optional<Lugar> lugar = lugarRepository.findById(idLugar);
 		if (lugar.isPresent()) {
-			LugarDto lugarDto = null;
+			LugarDto lugarDto = new LugarDto();
 			lugarDto.setNombre(lugar.get().getNombre());
 			lugarDto.setTipo(lugar.get().getTipo());
 			lugarDto.setDescripcion(lugar.get().getDescripcion());
@@ -35,6 +34,8 @@ public class LugarService {
 			lugarDto.setComentarios(comentarios);
 			return lugarDto;
 		}
-		return null;
+		else {
+			return null;
+		}
 	}
 }
