@@ -50,11 +50,30 @@ public class LugarService {
 	public List<LugarDto> recuperarTodo() {
 		List <Lugar>lugares = new ArrayList<Lugar>();
 		lugares = (List<Lugar>) lugarRepository.findAll();
-		LugarDto lugarDto = new LugarDto();
-		for(Lugar lugar:lugares) {
+		List <LugarDto> lugarDtoList = new ArrayList<LugarDto>();
+		for(Lugar lugar : lugares) {
+			LugarDto lugarDto = new LugarDto();
 			lugarDto.setId(lugar.getId());
-			//lugarDto.set
+			lugarDto.setNombre(lugar.getNombre());
+			lugarDto.setTipo(lugar.getTipo());
+			lugarDto.setDescripcion(lugar.getDescripcion());
+			lugarDto.setEstado(lugar.getEstado());
+			lugarDto.setMunicipio(lugar.getMunicipio());
+			lugarDto.setLatitud(lugar.getLatitud());
+			lugarDto.setLongitud(lugar.getLongitud());
+			lugarDto.setHorarios(lugar.getHorarios());
+			lugarDto.setPrecio(lugar.getPrecio());
+			
+			// Recuperamos los comentarios
+			for(Comentario comentario:lugar.getComentario()) {
+				ComentarioDto comentarioDto = new ComentarioDto();
+				comentarioDto.setUsuario(comentario.getUsuario());
+				comentarioDto.setDescripcion(comentario.getDescripcion());
+				comentarioDto.setFecha(comentario.getFecha());
+				lugarDto.addComentariosItem(comentarioDto);
+			}
+			lugarDtoList.add(lugarDto);
 		}
-		return null;
+		return lugarDtoList;
 	}
 }

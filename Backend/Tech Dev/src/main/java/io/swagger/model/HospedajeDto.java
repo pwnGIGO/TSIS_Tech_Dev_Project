@@ -39,7 +39,7 @@ public class HospedajeDto   {
   private String longitud = null;
 
   @JsonProperty("precio")
-  private BigDecimal precio = null;
+  private int precio;
 
   @JsonProperty("tipo")
   private String tipo = null;
@@ -195,7 +195,7 @@ public class HospedajeDto   {
     this.longitud = longitud;
   }
 
-  public HospedajeDto precio(BigDecimal precio) {
+  public HospedajeDto precio(int precio) {
     this.precio = precio;
     return this;
   }
@@ -207,11 +207,11 @@ public class HospedajeDto   {
   @Schema(example = "1500", description = "")
   
     @Valid
-    public BigDecimal getPrecio() {
+    public int getPrecio() {
     return precio;
   }
 
-  public void setPrecio(BigDecimal precio) {
+  public void setPrecio(int precio) {
     this.precio = precio;
   }
 

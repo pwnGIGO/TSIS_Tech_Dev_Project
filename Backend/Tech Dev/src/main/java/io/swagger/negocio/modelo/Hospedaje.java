@@ -6,8 +6,7 @@ import javax.persistence.*;
 @Table(name = "hospedaje")
 public class Hospedaje {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private String id;
 	
 	private String nombre;
 
@@ -23,7 +22,7 @@ public class Hospedaje {
 
 	private String longitud;
 
-	private String precio;
+	private int precio;
 	
 	private String tipo;
 	
@@ -38,6 +37,10 @@ public class Hospedaje {
 	private String wifi;
 	
 	private String mascota;
+	
+	public String getId() {
+		return id;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -95,11 +98,11 @@ public class Hospedaje {
 		this.longitud = longitud;
 	}
 
-	public String getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(String precio) {
+	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 

@@ -7,6 +7,7 @@ package io.swagger.api;
 
 import io.swagger.model.ComentarioDto;
 import io.swagger.model.ErrorDto;
+import io.swagger.model.HospedajeDto;
 import io.swagger.model.InlineResponse200;
 import io.swagger.model.InlineResponse2001;
 import io.swagger.model.LugarDto;
@@ -48,7 +49,7 @@ public interface V1Api {
     @RequestMapping(value = "/v1/hotel",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<InlineResponse2001> getHotels();
+    ResponseEntity<List<HospedajeDto>> getHotels();
 
 
     @Operation(summary = "HU-2 y HU-6:Recupera la información de un lugar turístico", description = "Regresa un objecto que contiene un lugar turístico", tags={ "Lugares Turísticos" })
@@ -72,7 +73,7 @@ public interface V1Api {
     @RequestMapping(value = "/v1/lugares",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<InlineResponse200> getPlaces();
+    ResponseEntity<List<LugarDto>> getPlaces();
 
 
     @Operation(summary = "HU-4:Permite dar de alta un comentario en un lugar en especifico", description = "Permite dar de alta un comentario", tags={ "Lugares Turísticos" })
