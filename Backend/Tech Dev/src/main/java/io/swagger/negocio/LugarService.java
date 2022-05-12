@@ -1,6 +1,6 @@
 package io.swagger.negocio;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.swagger.datos.LugarRepository;
+import io.swagger.model.ComentarioDto;
 import io.swagger.model.LugarDto;
+import io.swagger.negocio.modelo.Comentario;
 import io.swagger.negocio.modelo.Lugar;
 
 @Service
@@ -17,10 +19,10 @@ public class LugarService {
 	LugarRepository lugarRepository;
 	
 	public LugarDto buscarPorId(String id) {
-		Long idLugar = Long.parseLong(id);
-		Optional<Lugar> lugar = lugarRepository.findById(idLugar);
+		Optional<Lugar> lugar = lugarRepository.findById(id);
 		if (lugar.isPresent()) {
 			LugarDto lugarDto = new LugarDto();
+			lugarDto.setId(lugar.get().getId());
 			lugarDto.setNombre(lugar.get().getNombre());
 			lugarDto.setTipo(lugar.get().getTipo());
 			lugarDto.setDescripcion(lugar.get().getDescripcion());
@@ -30,12 +32,29 @@ public class LugarService {
 			lugarDto.setLongitud(lugar.get().getLongitud());
 			lugarDto.setHorarios(lugar.get().getHorarios());
 			lugarDto.setPrecio(lugar.get().getPrecio());
-			List comentarios  = lugar.get().getComentario();
-			lugarDto.setComentarios(comentarios);
+			// Recuperamos los comentarios
+			for(Comentario comentario:lugar.get().getComentario()) {
+				ComentarioDto comentarioDto= new ComentarioDto();
+				comentarioDto.setUsuario(comentario.getUsuario());
+				comentarioDto.setFecha(comentario.getFecha());
+				comentarioDto.setDescripcion(comentario.getDescripcion());
+				lugarDto.addComentariosItem(comentarioDto);
+			}
 			return lugarDto;
 		}
 		else {
 			return null;
 		}
+	}
+	
+	public List<LugarDto> recuperarTodo() {
+		List <Lugar>lugares = new ArrayList<Lugar>();
+		lugares = (List<Lugar>) lugarRepository.findAll();
+		LugarDto lugarDto = new LugarDto();
+		for(Lugar lugar:lugares) {
+			lugarDto.setId(lugar.getId());
+			//lugarDto.set
+		}
+		return null;
 	}
 }

@@ -1,5 +1,7 @@
 package io.swagger.negocio;
 
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,21 +23,20 @@ public class ComentarioService {
 	LugarRepository lugarRepository;
 	
 	public  LugarDto agregarComentario(ComentarioDto comentarioDto, String id) {
-		int i;
-		Long idComentario=Long.parseLong(id);
 		Comentario comentario = new Comentario();
-		Optional<Lugar> lugar = lugarRepository.findById(idComentario);
+		Optional<Lugar> lugar = lugarRepository.findById(id);
 		
 		if (lugar.isPresent()) {
 			comentario.setUsuario(comentarioDto.getUsuario());
 			comentario.setFecha(comentarioDto.getFecha());
 			comentario.setDescripcion(comentarioDto.getDescripcion());
 			comentario.setLugar(lugar.get());
-			// Agregamos el comentario al lugar de la Id
-			lugar.get().getComentario().add(comentario);
-			//Guardamos en BD
+			
+			// Guardamos en BD
 			comentarioRepository.save(comentario);
+			
 			LugarDto lugarDto = new LugarDto();
+			lugarDto.setId(lugar.get().getId());
 			lugarDto.setNombre(lugar.get().getNombre());
 			lugarDto.setTipo(lugar.get().getTipo());
 			lugarDto.setDescripcion(lugar.get().getDescripcion());
@@ -45,8 +46,7 @@ public class ComentarioService {
 			lugarDto.setLongitud(lugar.get().getLongitud());
 			lugarDto.setHorarios(lugar.get().getHorarios());
 			lugarDto.setPrecio(lugar.get().getPrecio());
-			List comentarios  = lugar.get().getComentario();
-			lugarDto.setComentarios(comentarios);
+			lugarDto.addComentariosItem(comentarioDto);
 			return lugarDto;
 		}
 		else {

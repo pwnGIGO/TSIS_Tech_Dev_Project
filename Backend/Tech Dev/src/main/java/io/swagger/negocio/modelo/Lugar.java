@@ -10,8 +10,7 @@ import java.util.List;
 @Table(name = "lugar")
 public class Lugar {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private String id;
 
 	private String nombre;
 	
@@ -29,10 +28,14 @@ public class Lugar {
 	
 	private String horarios;
 	
-	private BigDecimal precio;
+	private int precio;
 	
 	@OneToMany(mappedBy = "lugar", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios;
+	
+	public String getId() {
+		return id;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -98,11 +101,11 @@ public class Lugar {
 		this.horarios = horarios;
 	}
 
-	public BigDecimal getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(BigDecimal precio) {
+	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 
