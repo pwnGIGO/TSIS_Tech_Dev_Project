@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+
 import io.swagger.model.LugarDtoComentarios;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
@@ -48,11 +49,11 @@ public class LugarDto   {
   private String horarios = null;
 
   @JsonProperty("precio")
-  private BigDecimal precio = null;
+  private int precio;
 
   @JsonProperty("comentarios")
   @Valid
-  private List<LugarDtoComentarios> comentarios = null;
+  private List<ComentarioDto> comentarios = null;
 
   public LugarDto id(String id) {
     this.id = id;
@@ -225,7 +226,7 @@ public class LugarDto   {
     this.horarios = horarios;
   }
 
-  public LugarDto precio(BigDecimal precio) {
+  public LugarDto precio(int precio) {
     this.precio = precio;
     return this;
   }
@@ -237,22 +238,22 @@ public class LugarDto   {
   @Schema(example = "20", description = "")
   
     @Valid
-    public BigDecimal getPrecio() {
+    public int getPrecio() {
     return precio;
   }
 
-  public void setPrecio(BigDecimal precio) {
+  public void setPrecio(int precio) {
     this.precio = precio;
   }
 
-  public LugarDto comentarios(List<LugarDtoComentarios> comentarios) {
+  public LugarDto comentarios(List<ComentarioDto> comentarios) {
     this.comentarios = comentarios;
     return this;
   }
 
-  public LugarDto addComentariosItem(LugarDtoComentarios comentariosItem) {
+  public LugarDto addComentariosItem(ComentarioDto comentariosItem) {
     if (this.comentarios == null) {
-      this.comentarios = new ArrayList<LugarDtoComentarios>();
+      this.comentarios = new ArrayList<ComentarioDto>();
     }
     this.comentarios.add(comentariosItem);
     return this;
@@ -264,11 +265,11 @@ public class LugarDto   {
    **/
   @Schema(description = "")
       @Valid
-    public List<LugarDtoComentarios> getComentarios() {
+    public List<ComentarioDto> getComentarios() {
     return comentarios;
   }
 
-  public void setComentarios(List<LugarDtoComentarios> comentarios) {
+  public void setComentarios(List<ComentarioDto> comentarios) {
     this.comentarios = comentarios;
   }
 
