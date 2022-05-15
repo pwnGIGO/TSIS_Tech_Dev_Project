@@ -1,9 +1,8 @@
 <app-header></app-header>
-
+<div>
 <div class="contenedor">
-  
   <div class="list-sample">
-    <igx-list [allowLeftPanning]="true" [allowRightPanning]="true" #mainIgxList>
+    <igx-list [allowLeftPanning]="true" [allowRightPanning]="true" #mainIgxList style="overflow-y: scroll; overflow-x: hidden; padding-bottom: 10%;">
       <ng-template igxListItemLeftPanning>
         <div class="listItemLeftPanningStyle">
           <igx-icon>delete</igx-icon>Delete
@@ -29,24 +28,27 @@
     <igx-toast #toast></igx-toast>
   </div>
 
-  <div class="filtros">
+  <div class="filtros" style="padding-bottom: 25%;">
     <h5 class="titulo-filtro">Filtros</h5>
     <div class="formulario">
-      <label for="museo" class="checkbox"> <input type="checkbox" name="museo" id=""> Museo</label>
-      <label for="zonaA" class="checkbox"> <input type="checkbox" name="zonaA" id=""> Zona Arqueológica</label>
-      <label for="playa" class="checkbox"> <input type="checkbox" name="playa" id=""> Playa</label>
-      <label for="pMagico" class="checkbox"> <input type="checkbox" name="pMagico" id=""> Pueblo mágico</label>
+      <label for="museo" class="checkbox"> <input type="checkbox" name="museo" id="" (click)="filtro('Museo')"> Museo</label>
+      <label for="zonaA" class="checkbox"> <input type="checkbox" name="zonaA" id="" (click)="filtro('Zona Arqueológica')"> Zona Arqueológica</label>
+      <label for="playa" class="checkbox"> <input type="checkbox" name="playa" id="" (click)="filtro('Playa')"> Playa</label>
+      <label for="pMagico" class="checkbox"> <input type="checkbox" name="pMagico" id="" (click)="filtro('Pueblo Mágico')"> Pueblo mágico</label>
 
-      <label for="pMax" class="number-input"> <input class="set-width" placeholder="400" type="number" name="pMax">
-        Precio max.</label>
+      <label for="monumento" class="checkbox"> <input type="checkbox" name="monumento" id="" (click)="filtro('Monumento')"> Monumento</label>
+      
+      <label for="pMin" class="number-input"> <input class="set-width" placeholder="0" type="number" name="pMin" maxlength="5" minlength="1" max="5000" min="0">Precio min.</label>
 
-      <label for="pMin" class="number-input"> <input class="set-width" placeholder="200" type="number" name="pMin">
-        Precio min.</label>
+      <label for="pMax" class="number-input"> <input class="set-width" placeholder="5000" type="number" name="pMax" maxlength="5" minlength="1" max="5000" min="0">Precio max.</label>
 
-      <button class="btn btn-dark">Buscar</button>
+
+      <button class="btn btn-dark" (click)="buscar()">Buscar</button>
+      <button class="btn btn-dark" (click)="limpiar()">Limpiar</button>
     </div>
   </div>
 
+</div>
 </div>
 
 
