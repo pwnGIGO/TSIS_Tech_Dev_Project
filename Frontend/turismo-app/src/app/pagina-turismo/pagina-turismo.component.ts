@@ -10,13 +10,14 @@ import { HttpClient } from '@angular/common/http';
 export class PaginaTurismoComponent implements OnInit {
   
   url: string = 'https://coviuam.uam.mx:5001/lugares/';
+  //url: string = 'http://localhost:5001/lugares/';
   lugar = {
     "nombre": "",
     "foto": "",
     "descripcion": "",
     "tipo": "",
     "horarios": "",
-    "precios": ""
+    "precio": ""
   }
   comentarios
 

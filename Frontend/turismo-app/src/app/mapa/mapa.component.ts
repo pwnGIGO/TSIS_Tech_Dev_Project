@@ -25,6 +25,7 @@ export class MapaComponent implements OnInit {
   }
   lugarId: string
   url: string = 'https://coviuam.uam.mx:5001/lugares/';
+  //url: string = 'http://localhost:5001/lugares/';
 
   constructor(private http: HttpClient, private route: Router, private activatedRoute: ActivatedRoute ) { 
     this.lugarId = this.activatedRoute.snapshot.params['id'];
@@ -54,7 +55,7 @@ export class MapaComponent implements OnInit {
 
     this.map.flyTo([lat, long], 15);
 
-    const marker = L.marker([lat, long]).bindPopup('Angular Leaflet');
+    const marker = L.marker([lat, long]).bindPopup(this.lugar.nombre);
 
     marker.addTo(this.map);
   }
