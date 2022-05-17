@@ -44,7 +44,6 @@ export class ListaLugaresComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<any>(this.url).subscribe(
       datos => {
-        //console.log(datos)
         this.lugares = datos["projects"];
         this.arrTemporal = datos["projects"];
       }, error => console.log("Ocurrió un error en la petición HTTP!")    
@@ -52,7 +51,6 @@ export class ListaLugaresComponent implements OnInit {
   }
 
   public abrir(id) {
-    //console.log("abriendo", id)
     this.route.navigate(['/lugares/' + id]);
   }
   
@@ -67,13 +65,6 @@ export class ListaLugaresComponent implements OnInit {
     this.aux = false;
     this.lugares = [];
     this.lugares = this.arrTemporal;
-
-    console.log(this.filtrado);
-    console.log(this.minValue);
-    console.log(this.maxValue);
-    console.log(this.max);
-    console.log(this.min);
-    console.log(this.lugares);
   }
 
   funcionMin($event){
@@ -88,7 +79,6 @@ export class ListaLugaresComponent implements OnInit {
 
 
   public filtro(tipo){
-    //console.log("entre", tipo)
     this.filtrado[tipo] = !this.filtrado[tipo]
     console.log(this.filtrado)
   }
