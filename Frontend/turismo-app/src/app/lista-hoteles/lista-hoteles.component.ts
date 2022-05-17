@@ -33,7 +33,7 @@ export class ListaHotelesComponent implements OnInit {
   }
 
   public abrir(id) {
-    this.route.navigate(['/hoteles/' + id]);
+    this.route.navigate(['/hotel/' + id]);
   }
 
 }

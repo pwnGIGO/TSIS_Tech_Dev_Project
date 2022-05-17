@@ -28,19 +28,19 @@
     <igx-toast #toast></igx-toast>
   </div>
 
-  <div class="filtros" style="padding-bottom: 25%;">
+  <div class="filtros">
     <h5 class="titulo-filtro">Filtros</h5>
     <div class="formulario">
-      <label for="museo" class="checkbox"> <input type="checkbox" name="museo" id="" (click)="filtro('Museo')"> Museo</label>
-      <label for="zonaA" class="checkbox"> <input type="checkbox" name="zonaA" id="" (click)="filtro('Zona Arqueológica')"> Zona Arqueológica</label>
-      <label for="playa" class="checkbox"> <input type="checkbox" name="playa" id="" (click)="filtro('Playa')"> Playa</label>
-      <label for="pMagico" class="checkbox"> <input type="checkbox" name="pMagico" id="" (click)="filtro('Pueblo Mágico')"> Pueblo mágico</label>
+      <label for="museo" class="checkbox"> <input [checked]="filtrado['Museo']" type="checkbox" name="museo" id="" (click)="filtro('Museo')"> Museo</label>
+      <label for="zonaA" class="checkbox"> <input [checked]="filtrado['Zona Arqueológica']" type="checkbox" name="zonaA" id="" (click)="filtro('Zona Arqueológica')"> Zona Arqueológica</label>
+      <label for="playa" class="checkbox"> <input [checked]="filtrado['Playa']" type="checkbox" name="playa" id="" (click)="filtro('Playa')"> Playa</label>
+      <label for="pMagico" class="checkbox"> <input [checked]="filtrado['Pueblo Mágico']" type="checkbox" name="pMagico" id="" (click)="filtro('Pueblo Mágico')"> Pueblo mágico</label>
 
-      <label for="monumento" class="checkbox"> <input type="checkbox" name="monumento" id="" (click)="filtro('Monumento')"> Monumento</label>
+      <label for="monumento" class="checkbox"> <input [checked]="filtrado['Monumento']" type="checkbox" name="monumento" id="" (click)="filtro('Monumento')"> Monumento</label>
       
-      <label for="pMin" class="number-input"> <input class="set-width" placeholder="0" type="number" name="pMin" maxlength="5" minlength="1" max="5000" min="0">Precio min.</label>
+      <label for="pMin" class="number-input"> <input [(ngModel)]="minValue" (keyup)=funcionMin($event) class="set-width" placeholder="0" type="number" name="pMin" maxlength="5" minlength="1" max="5000" min="0">Precio min.</label>
 
-      <label for="pMax" class="number-input"> <input class="set-width" placeholder="5000" type="number" name="pMax" maxlength="5" minlength="1" max="5000" min="0">Precio max.</label>
+      <label for="pMax" class="number-input"> <input [(ngModel)]="maxValue" (keyup)=funcionMax($event) class="set-width" placeholder="5000" type="number" name="pMax" maxlength="5" minlength="1" max="5000" min="0">Precio max.</label>
 
 
       <button class="btn btn-dark" (click)="buscar()">Buscar</button>

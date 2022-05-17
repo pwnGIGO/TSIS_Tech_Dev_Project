@@ -2,7 +2,8 @@
 <!-- Comentario para hacer commit -->
 <div class="contenedor">
   <div class="list-sample">
-    <igx-list [allowLeftPanning]="true" [allowRightPanning]="true" #mainIgxList>
+    <igx-list [allowLeftPanning]="true" [allowRightPanning]="true" #mainIgxList
+      style="overflow-y: scroll; overflow-x: hidden; padding-bottom: 10%;">
       <ng-template igxListItemLeftPanning>
         <div class="listItemLeftPanningStyle">
           <igx-icon>delete</igx-icon>Delete

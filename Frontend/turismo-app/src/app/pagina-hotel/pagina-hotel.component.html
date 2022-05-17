@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div>
+  <div class="container-fluid">
+    <div class="row">
+      <h1 align="center">{{hotel.nombre}}</h1>
+      <div class="col-sm-5">
+        <div>
+          <img src="{{hotel.foto}}" class="foto" alt="Image did not load...">
+        </div>
+      </div>
+      <div class="col-sm-7" style="display: grid;">
+        <button class="btn btn-secondary" type="button" (click)="abrir(hotelId)"> Ver Mapa</button>
+        <h4>Tipo: {{hotel.tipo}} </h4>
+        <h4>Descripción:</h4>
+        <div class="descripcion">
+          <p id="descripcion">{{hotel.descripcion}}</p>
+        </div>
+        <div class="container-fluid border1">
+          <div class="row">
+            <div class="col-sm-8">
+              <h4>Precio:</h4>
+              <p>${{hotel.precio}} MXN</p>
+              <h4>Horarios:</h4>
+              <p>{{hotel.horarios}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+  <br>
+  <br>
+</div>
+<app-footer></app-footer>
