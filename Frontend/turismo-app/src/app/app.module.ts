@@ -30,7 +30,7 @@ import {
   IgxButtonGroupModule
  } from "igniteui-angular";
 import { ListaHotelesComponent } from './lista-hoteles/lista-hoteles.component';
-import { PaginaHotelComponent } from './pagina-hotel/pagina-hotel.component';
+
 
 /*const routes: Routes = [
 
@@ -48,8 +48,7 @@ import { PaginaHotelComponent } from './pagina-hotel/pagina-hotel.component';
     ListaLugaresComponent,
     PaginaTurismoComponent,
     HomeComponent,
-    ListaHotelesComponent,
-    PaginaHotelComponent
+    ListaHotelesComponent
   ],
   imports: [
     BrowserModule,

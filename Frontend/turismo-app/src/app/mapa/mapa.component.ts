@@ -24,8 +24,8 @@ export class MapaComponent implements OnInit {
     "longitud": ""
   }
   lugarId: string
-  url: string = 'https://coviuam.uam.mx:5001/lugares/';
-  //url: string = 'http://localhost:5001/lugares/';
+  //url: string = 'https://coviuam.uam.mx:5001/lugares/';
+  url: string = 'http://localhost:8080/v1/lugares/';
 
   constructor(private http: HttpClient, private route: Router, private activatedRoute: ActivatedRoute ) { 
     this.lugarId = this.activatedRoute.snapshot.params['id'];
@@ -33,7 +33,7 @@ export class MapaComponent implements OnInit {
     this.http.get<any>(this.url+this.lugarId).subscribe(
       datos => {
         //console.log(datos)
-        this.lugar = datos["project"]
+        this.lugar = datos
         this.loadMap();
       }, error => console.log("Ocurrió un error en la petición HTTP!")    
     );

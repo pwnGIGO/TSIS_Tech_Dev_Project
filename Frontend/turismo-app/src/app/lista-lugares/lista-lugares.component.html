@@ -16,12 +16,12 @@
       <igx-list-item isHeader="true" style="font-size: 28px; font-weight:bold; margin-bottom:15px;">Lugares
       </igx-list-item>
       <igx-list-item class="lista" #item *ngFor="let lugar of lugares" igxRipple="pink"
-        igxRippleTarget=".igx-list__item-content" (click)="abrir(lugar._id)" s style="cursor:pointer;">
+        igxRippleTarget=".igx-list__item-content" (click)="abrir(lugar.id)" s style="cursor:pointer;">
         <igx-avatar class="img" igxListThumbnail [src]="lugar.foto"></igx-avatar>
-        <span class="lugarTitulo" (click)="abrir(lugar._id)" igxListLineTitle>{{ lugar.nombre }}</span>
-        <span class="estado" (click)="abrir(lugar._id)" igxListLineSubTitle>{{ lugar.estado }}</span>
-        <span class="tipo" (click)="abrir(lugar._id)" igxListLineSubTitle>{{ lugar.tipo }}</span>
-        <span class="precio" (click)="abrir(lugar._id)" igxListLineSubTitle>Precio por persona: ${{ lugar.precio }}
+        <span class="lugarTitulo" (click)="abrir(lugar.id)" igxListLineTitle>{{ lugar.nombre }}</span>
+        <span class="estado" (click)="abrir(lugar.id)" igxListLineSubTitle>{{ lugar.estado }}</span>
+        <span class="tipo" (click)="abrir(lugar.id)" igxListLineSubTitle>{{ lugar.tipo }}</span>
+        <span class="precio" (click)="abrir(lugar.id)" igxListLineSubTitle>Precio por persona: ${{ lugar.precio }}
           MXN</span>
       </igx-list-item>
     </igx-list>

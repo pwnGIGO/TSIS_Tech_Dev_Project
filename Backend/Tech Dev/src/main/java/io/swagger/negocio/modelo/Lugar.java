@@ -3,6 +3,7 @@ package io.swagger.negocio.modelo;
 import javax.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,6 +29,8 @@ public class Lugar {
 	
 	private String horarios;
 	
+	private String foto;
+	
 	private int precio;
 	
 	@OneToMany(mappedBy = "lugar", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -35,6 +38,10 @@ public class Lugar {
 	
 	public String getId() {
 		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -108,13 +115,21 @@ public class Lugar {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 	public List<Comentario> getComentario() {
 		return comentarios;
 	}
 
 	public void setComentario(List<Comentario> comentario) {
-		this.comentarios = comentarios;
+		this.comentarios = comentario;
 	}
 
 

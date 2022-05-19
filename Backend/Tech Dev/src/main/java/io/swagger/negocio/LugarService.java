@@ -32,6 +32,7 @@ public class LugarService {
 			lugarDto.setLongitud(lugar.get().getLongitud());
 			lugarDto.setHorarios(lugar.get().getHorarios());
 			lugarDto.setPrecio(lugar.get().getPrecio());
+			lugarDto.setFoto(lugar.get().getFoto());
 			// Recuperamos los comentarios
 			for(Comentario comentario:lugar.get().getComentario()) {
 				ComentarioDto comentarioDto= new ComentarioDto();
@@ -63,6 +64,7 @@ public class LugarService {
 			lugarDto.setLongitud(lugar.getLongitud());
 			lugarDto.setHorarios(lugar.getHorarios());
 			lugarDto.setPrecio(lugar.getPrecio());
+			lugarDto.setFoto(lugar.getFoto());
 			
 			// Recuperamos los comentarios
 			for(Comentario comentario:lugar.getComentario()) {

@@ -47,6 +47,9 @@ public class LugarDto   {
 
   @JsonProperty("horarios")
   private String horarios = null;
+  
+  @JsonProperty("foto")
+  private String foto = null;
 
   @JsonProperty("precio")
   private int precio;
@@ -231,6 +234,26 @@ public class LugarDto   {
     return this;
   }
 
+  
+  /**
+   * Get foto
+   * @return foto
+   **/
+  @Schema(example = "https://www.hotelgeneve.com.mx/cache/10/a7/10a77a35aa4305cd51e3dea78d20456f.jpg", description = "")
+  
+    public String getFoto() {
+    return foto;
+  }
+
+  public void setFoto(String foto) {
+    this.foto = foto;
+  }
+
+  public LugarDto foto(String foto) {
+    this.foto = foto;
+    return this;
+  }
+  
   /**
    * Get precio
    * @return precio
@@ -293,12 +316,13 @@ public class LugarDto   {
         Objects.equals(this.longitud, lugarDto.longitud) &&
         Objects.equals(this.horarios, lugarDto.horarios) &&
         Objects.equals(this.precio, lugarDto.precio) &&
+        Objects.equals(this.foto, lugarDto.foto) &&
         Objects.equals(this.comentarios, lugarDto.comentarios);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, nombre, municipio, estado, descripcion, tipo, latitud, longitud, horarios, precio, comentarios);
+    return Objects.hash(id, nombre, municipio, estado, descripcion, tipo, latitud, longitud, horarios, precio, foto, comentarios);
   }
 
   @Override
@@ -316,6 +340,7 @@ public class LugarDto   {
     sb.append("    longitud: ").append(toIndentedString(longitud)).append("\n");
     sb.append("    horarios: ").append(toIndentedString(horarios)).append("\n");
     sb.append("    precio: ").append(toIndentedString(precio)).append("\n");
+    sb.append("    foto: ").append(toIndentedString(foto)).append("\n");
     sb.append("    comentarios: ").append(toIndentedString(comentarios)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -18,8 +18,8 @@ export class ListaLugaresComponent implements OnInit {
   public list: IgxListComponent;
 
 
-  url: string = 'https://coviuam.uam.mx:5001/lugares';
-  //url: string = 'http://localhost:5001/lugares';
+  //url: string = 'https://coviuam.uam.mx:5001/lugares';
+  url: string = 'http://localhost:8080/v1/lugares';
   lugares = [];
   arrTemporal = [];
   //isFavorite: false,
@@ -44,13 +44,14 @@ export class ListaLugaresComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<any>(this.url).subscribe(
       datos => {
-        this.lugares = datos["projects"];
-        this.arrTemporal = datos["projects"];
+        this.lugares = datos;
+        this.arrTemporal = datos;
       }, error => console.log("Ocurrió un error en la petición HTTP!")    
     );
   }
 
   public abrir(id) {
+    console.log('IDD',id);
     this.route.navigate(['/lugares/' + id]);
   }
   

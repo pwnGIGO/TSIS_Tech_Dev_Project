@@ -23,20 +23,12 @@ public class HospedajeService {
 		for(Hospedaje hospedaje : hospedajeList) {
 			HospedajeDto hospedajeDto = new HospedajeDto();
 			hospedajeDto.setDescripcion(hospedaje.getDescripcion());
-			hospedajeDto.setDireccion(hospedaje.getDireccion());
-			hospedajeDto.setEstacionamiento(hospedaje.getEstacionamiento());
-			hospedajeDto.setHabitacion(hospedaje.getHabitacion());
+			hospedajeDto.setFoto(hospedaje.getFoto());
 			hospedajeDto.setLatitud(hospedaje.getLatitud());
-			hospedajeDto.setLavanderia(hospedaje.getLavanderia());
 			hospedajeDto.setLongitud(hospedaje.getLongitud());
-			hospedajeDto.setMascotas(hospedaje.getMascota());
 			hospedajeDto.setNombre(hospedaje.getNombre());
-			hospedajeDto.setPiscina(hospedaje.getPiscina());
 			hospedajeDto.setPrecio(hospedaje.getPrecio());
-			hospedajeDto.setSitioWeb(hospedaje.getSitioWeb());
 			hospedajeDto.setTelefono(hospedaje.getTelefono());
-			hospedajeDto.setTipo(hospedaje.getTipo());
-			hospedajeDto.setWifi(hospedaje.getWifi());
 			hospedajeDtoList.add(hospedajeDto);
 		}
 		return hospedajeDtoList;

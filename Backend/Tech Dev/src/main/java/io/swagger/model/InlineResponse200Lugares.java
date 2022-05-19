@@ -47,6 +47,9 @@ public class InlineResponse200Lugares   {
 
   @JsonProperty("horarios")
   private String horarios = null;
+  
+  @JsonProperty("foto")
+  private String foto = null;
 
   @JsonProperty("precio")
   private BigDecimal precio = null;
@@ -258,6 +261,27 @@ public class InlineResponse200Lugares   {
     this.comentarios.add(comentariosItem);
     return this;
   }
+  
+  
+  /**
+   * Get foto
+   * @return foto
+   **/
+  @Schema(example = "12.0", description = "")
+  
+    public String getFoto() {
+    return foto;
+  }
+
+  public void setFoto(String foto) {
+    this.foto = foto;
+  }
+
+  public InlineResponse200Lugares foto(String foto) {
+    this.foto = foto;
+    return this;
+  }
+
 
   /**
    * Get comentarios
@@ -293,12 +317,13 @@ public class InlineResponse200Lugares   {
         Objects.equals(this.longitud, inlineResponse200Lugares.longitud) &&
         Objects.equals(this.horarios, inlineResponse200Lugares.horarios) &&
         Objects.equals(this.precio, inlineResponse200Lugares.precio) &&
+        Objects.equals(this.foto, inlineResponse200Lugares.foto) &&
         Objects.equals(this.comentarios, inlineResponse200Lugares.comentarios);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, nombre, municipio, estado, descripcion, tipo, latitud, longitud, horarios, precio, comentarios);
+    return Objects.hash(id, nombre, municipio, estado, descripcion, tipo, latitud, longitud, horarios, precio, foto, comentarios);
   }
 
   @Override
@@ -316,6 +341,7 @@ public class InlineResponse200Lugares   {
     sb.append("    longitud: ").append(toIndentedString(longitud)).append("\n");
     sb.append("    horarios: ").append(toIndentedString(horarios)).append("\n");
     sb.append("    precio: ").append(toIndentedString(precio)).append("\n");
+    sb.append("    foto: ").append(toIndentedString(foto)).append("\n");
     sb.append("    comentarios: ").append(toIndentedString(comentarios)).append("\n");
     sb.append("}");
     return sb.toString();

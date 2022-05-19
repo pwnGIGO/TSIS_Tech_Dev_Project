@@ -10,13 +10,11 @@ public class Hospedaje {
 	
 	private String nombre;
 
-	private String direccion;
-
 	private String telefono;
 
-	private String sitioWeb;
-
 	private String descripcion;
+	
+	private String foto;
 
 	private String latitud;
 
@@ -24,22 +22,13 @@ public class Hospedaje {
 
 	private int precio;
 	
-	private String tipo;
-	
-	private String estacionamiento;
-	
-	private String piscina;
-	
-	private String habitacion;
-	
-	private String lavanderia;
-	
-	private String wifi;
-	
-	private String mascota;
 	
 	public String getId() {
 		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -50,14 +39,6 @@ public class Hospedaje {
 		this.nombre = nombre;
 	}
 
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
 	public String getTelefono() {
 		return telefono;
 	}
@@ -66,13 +47,6 @@ public class Hospedaje {
 		this.telefono = telefono;
 	}
 
-	public String getSitioWeb() {
-		return sitioWeb;
-	}
-
-	public void setSitioWeb(String sitioWeb) {
-		this.sitioWeb = sitioWeb;
-	}
 
 	public String getDescripcion() {
 		return descripcion;
@@ -81,6 +55,14 @@ public class Hospedaje {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}	
 
 	public String getLatitud() {
 		return latitud;
@@ -106,59 +88,4 @@ public class Hospedaje {
 		this.precio = precio;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public String getEstacionamiento() {
-		return estacionamiento;
-	}
-
-	public void setEstacionamiento(String estacionamiento) {
-		this.estacionamiento = estacionamiento;
-	}
-
-	public String getPiscina() {
-		return piscina;
-	}
-
-	public void setPiscina(String piscina) {
-		this.piscina = piscina;
-	}
-
-	public String getHabitacion() {
-		return habitacion;
-	}
-
-	public void setHabitacion(String habitacion) {
-		this.habitacion = habitacion;
-	}
-
-	public String getLavanderia() {
-		return lavanderia;
-	}
-
-	public void setLavanderia(String lavanderia) {
-		this.lavanderia = lavanderia;
-	}
-
-	public String getWifi() {
-		return wifi;
-	}
-
-	public void setWifi(String wifi) {
-		this.wifi = wifi;
-	}
-
-	public String getMascota() {
-		return mascota;
-	}
-
-	public void setMascota(String mascota) {
-		this.mascota = mascota;
-	}
 }

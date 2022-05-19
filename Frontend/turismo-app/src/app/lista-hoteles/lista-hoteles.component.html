@@ -14,14 +14,14 @@
           <igx-icon>call</igx-icon>Dial
         </div>
       </ng-template>
-      <igx-list-item isHeader="true" style="font-size: 28px; font-weight:bold; margin-bottom:15px;">Hoteles
+      <igx-list-item isHeader="true" style="font-size: 28px; font-weight:bold; margin-bottom:15px; ">Hoteles
       </igx-list-item>
       <igx-list-item class="lista" #item *ngFor="let hotel of hoteles" igxRipple="pink"
-        igxRippleTarget=".igx-list__item-content" (click)="abrir(lugar._id)" s style="cursor:pointer;">
+        igxRippleTarget=".igx-list__item-content">
         <igx-avatar class="img" igxListThumbnail [src]="hotel.foto"></igx-avatar>
-        <span class="lugarTitulo" (click)="abrir(hotel._id)" igxListLineTitle>{{ hotel.nombre }}</span>
-        <span class="tipo" (click)="abrir(hotel._id)" igxListLineSubTitle>{{ hotel.tipo }}</span>
-        <span class="precio" (click)="abrir(hotel._id)" igxListLineSubTitle>Precio por persona: ${{ hotel.precio }}
+        <span class="lugarTitulo" igxListLineTitle>{{ hotel.nombre }}</span>
+        <span class="tipo" igxListLineSubTitle>Telefono: {{ hotel.telefono }}</span>
+        <span class="precio" igxListLineSubTitle>Precio por persona: ${{ hotel.precio }}
           MXN</span>
       </igx-list-item>
     </igx-list>

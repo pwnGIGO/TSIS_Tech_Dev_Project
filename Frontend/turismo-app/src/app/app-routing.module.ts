@@ -5,7 +5,6 @@ import { MapaComponent } from './mapa/mapa.component';
 import { PaginaTurismoComponent } from './pagina-turismo/pagina-turismo.component';
 import { ListaLugaresComponent } from './lista-lugares/lista-lugares.component';
 import { ListaHotelesComponent } from './lista-hoteles/lista-hoteles.component';
-import { PaginaHotelComponent } from './pagina-hotel/pagina-hotel.component';
 
 const routes: Routes = [
   {
@@ -23,10 +22,6 @@ const routes: Routes = [
   {
     path: 'lugares/:id',
     component: PaginaTurismoComponent
-  },
-  {
-    path: 'hotel/:id',
-    component: PaginaHotelComponent
   },
   {
     path: 'mapa/:id',

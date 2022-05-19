@@ -10,6 +10,7 @@ import io.swagger.model.ErrorDto;
 import io.swagger.model.HospedajeDto;
 import io.swagger.model.InlineResponse200;
 import io.swagger.model.InlineResponse2001;
+import io.swagger.model.InlineResponse200Lugares;
 import io.swagger.model.LugarDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -65,7 +66,7 @@ public interface V1Api {
 
     @Operation(summary = "HU-1 y HU-3:Recupera la lista completa de lugares turísticos", description = "Regresa un objecto que contiene todos los lugares turísticos", tags={ "Lugares Turísticos" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Consulta exitosa!", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse200.class))),
+        @ApiResponse(responseCode = "200", description = "Consulta exitosa!", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse200Lugares.class))),
         
         @ApiResponse(responseCode = "404", description = "No se ha encontrado...", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))),
         

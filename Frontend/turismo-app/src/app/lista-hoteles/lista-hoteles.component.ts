@@ -17,7 +17,8 @@ export class ListaHotelesComponent implements OnInit {
   public list: IgxListComponent;
 
 
-  url: string = 'https://coviuam.uam.mx:5001/hoteles';
+  //url: string = 'https://coviuam.uam.mx:5001/hoteles';
+  url: string = 'http://localhost:8080/v1/hotel';
   hoteles = [];
 
   constructor(private http: HttpClient, private route: Router) {}
@@ -26,14 +27,12 @@ export class ListaHotelesComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<any>(this.url).subscribe(
       datos => {
-        console.log(datos)
-        this.hoteles = datos["projects"]
+        this.hoteles = datos
       }, error => console.log("Ocurrió un error en la petición HTTP!")    
     );
   }
 
   public abrir(id) {
-    this.route.navigate(['/hotel/' + id]);
   }
 
 }
